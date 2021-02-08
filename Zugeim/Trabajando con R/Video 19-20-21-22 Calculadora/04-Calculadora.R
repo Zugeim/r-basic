@@ -1,6 +1,4 @@
 
-2*(3+1)
-
 # decimales con punto
 3.5 
 
@@ -61,7 +59,7 @@ log(pi)
 
 abs(-pi)
 
-# Combinatoria
+####### Combinatoria
 
 # Factorial
 factorial(7)
@@ -93,3 +91,30 @@ asin(0.8660254) #arc sin en radianes
 asin(0.8660254) * 180 /pi #arc sin en grados
 asin(5) #arc sin x in [-1,1]
 acos(-8)
+
+######## Numeros en coma flotante
+
+# Muestra las n cifras significativas del numero X
+print(sqrt(2),10)
+print(sqrt(2),20) # No pedir mas de 16 digitos, pierde precision 
+
+# Redondea a n cifras significativas un resultado o vector numerico X
+round(sqrt(2),3)
+round(1.25,1)
+round(1.35,1)
+round(sqrt(2),0)
+round(sqrt(2))
+
+round(digits = 5, sqrt(2)) # otra manera de escribir
+
+# [x], parte entera por defecto de x
+floor(sqrt(2))  # Redondea hacia abajo
+floor(-3.45)
+
+# [x], parte entera por exceso de x
+ceiling(sqrt(2)) # Redondea hacia arriba
+ceiling(-3.45)
+
+# Parte entera de x, eliminando la parte decimal
+trunc(sqrt(2)) # No suele usarse
+trunc(-3.45)
