@@ -51,4 +51,25 @@ NaN
 2^50 # = 1.259e+15 = 125900000000000
 2 ^(-15) # = 3.051758e-05 = 0.00003051758
 
-####################################################### Hay mas en scripts/tema1/04-Calculadora
+#Funciones
+
+sqrt(25)
+
+exp(1)
+
+log(pi)
+
+abs(-pi)
+
+# Combinatoria
+
+# Factorial
+factorial(7)
+factorial(-2)# No se pueden negativos
+
+# Coeficiente binomial (Interesante mirar en wikipedia piramide de pascal)
+choose(5, 3) # Tengo 5 platos y me quiero comer 3, de cuantas formas puedo hacerlo
+choose(3, 5)
+
+#Logaritmos
+6^log(4,6) # Logaritmo de 4 en base 6
