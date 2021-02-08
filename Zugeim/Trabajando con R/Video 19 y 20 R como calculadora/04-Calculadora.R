@@ -73,3 +73,23 @@ choose(3, 5)
 
 #Logaritmos
 6^log(4,6) # Logaritmo de 4 en base 6
+
+# Los angulos se dan en radianes
+sin(pi/2)
+cos(pi)
+tan(0)
+
+# Pasar a radianes
+sin(90*pi/180)
+sinpi(1/2) # = sin(pi/2)
+
+# Valores extremos de la tangente
+tan(pi) # -1.224647e-16 ~ 0
+tan(pi/2) # 1.633124e+16 ~ Inf
+
+# Arcoseno
+asin(0.8660254) 
+asin(0.8660254) #arc sin en radianes
+asin(0.8660254) * 180 /pi #arc sin en grados
+asin(5) #arc sin x in [-1,1]
+acos(-8)
