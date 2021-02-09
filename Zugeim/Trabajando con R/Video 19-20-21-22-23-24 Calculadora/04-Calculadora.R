@@ -59,7 +59,9 @@ log(pi)
 
 abs(-pi)
 
-####### Combinatoria
+
+
+########################################## Combinatoria ##########################################
 
 # Factorial
 factorial(7)
@@ -92,7 +94,9 @@ asin(0.8660254) * 180 /pi #arc sin en grados
 asin(5) #arc sin x in [-1,1]
 acos(-8)
 
-######## Numeros en coma flotante
+
+
+########################################## Numeros en coma flotante ##########################################
 
 # Muestra las n cifras significativas del numero X
 print(sqrt(2),10)
@@ -118,3 +122,79 @@ ceiling(-3.45)
 # Parte entera de x, eliminando la parte decimal
 trunc(sqrt(2)) # No suele usarse
 trunc(-3.45)
+
+
+
+########################################## Crear variables ##########################################
+
+x = (pi^2)/2
+x # Al poner la variable se imprime
+
+y <- cospi(1/4) # Para asignar tambien variables
+y
+
+sin(pi/4) + cos(pi/4)-> z # Tambien asigna
+z
+
+edad <- 30
+
+nombre = "Imanol Miguez"
+
+# Diferencia mayus de minus
+Hola = 1
+hola = 3
+
+#No es valido empezar por un numero
+5hola
+
+#Si es valido acabar con un numero
+pi.4 = 4*pi
+pi.4
+
+
+
+########################################## Funciones ##########################################
+
+# En () la variable y en {} la funcion
+# Ejemplo: Funcion f(x) = x^3 - (3^x) * sen(x)
+f = function(x){
+  x^3 - (3^x) * sin(x)
+  }
+f(4)
+f(pi/2)
+
+# Mas ejemplos
+
+suma1 <- function(t){
+  t + 1
+}
+suma1(6)
+suma1(-5)
+
+product <- function(x,y){
+  x*y
+}
+product(5,7)
+
+g <- function(x,y,z){
+  exp(x^2 + y^2) * sin(z)
+}
+g(1, 2, 3)
+
+suma5 <- function(numero){
+  numero = suma1(numero);
+  numero = suma1(numero);
+  numero = suma1(numero);
+  numero = suma1(numero);
+  numero = suma1(numero);
+  suma1(numero) # En el ultimo no lo guarda en la variable hace la ultima suma y lo muestra por consola
+}
+
+# Para listar todos los elementos
+ls()
+
+# Eliminar funcion
+rm(product)
+
+#Para eliminar todas las variables
+rm(list = ls()) # Mejor usar la escoba de la derecha
