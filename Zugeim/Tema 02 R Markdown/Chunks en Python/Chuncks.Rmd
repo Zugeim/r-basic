@@ -113,3 +113,13 @@ Cuando queremos hacer la raiz cuadrada de dos, podemos hacerlo:
 - En \LaTeX: $\sqrt{2}$ 
 - En `R` haciendo `r sqrt(2)`
 - La frase completa: $\sqrt{2}=$ `r sqrt(2)`
+
+```{r prueba, results='hide', echo=FALSE}
+notas = c(3,5,7,7,9,10,4,6,4)
+media = mean(notas) # Hace la media
+n = length(notas) # Saca el numero de notas
+desv.tip = sd(notas) # calcula la desviacion tipica
+```
+
+Este año he hecho `r n` examenes, con una media $\overline{x}=$ `r round(media, 2)`
+y una desviación tipica de $s=$ `r round(desv.tip, 2)`

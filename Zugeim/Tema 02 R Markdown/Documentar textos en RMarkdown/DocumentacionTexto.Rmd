@@ -1,0 +1,73 @@
+---
+title: "Documentación de texto"
+author: "Imanol"
+date: "10/2/2021"
+output: pdf_document
+---
+
+# Titulo 1
+
+## Titulo 2
+
+### Titulo 3
+
+#### Titulo 4
+
+##### Titulo 5
+
+###### Titulo 6
+
+Esto es texto normal. R en codigo `R`. Latex en logo \LaTeX.
+
+Para que separe parrafos mínimo doble intro.
+
+Para colocar cursiva se pueden usar asteriscos: *Esto esta en cursiva* o usar barra baja _esto también esta en cursiva_.
+
+Para negrita se pueden usar dos asteriscos **Negrita** o dos barras bajas __Negrita__.
+
+Los superíndices van con el *sombrerito*: este curso vale por mi nota^2^.
+
+Para tachar una palabra doble tilde ~~Esto esta tachado~~.
+
+Para colocar links ponemos [poner la tilde](https://www.youtube.com/watch?v=CYZNJjLBJyM&ab_channel=ZakstroxVizciu5GameplaysYTutoriales)
+
+endash: --
+
+emdash: ---
+
+elipsis: ...
+
+ecuaciones en linea $S= \pi\cdot r^2$.
+
+Para colocar una imagen: mirar teoria porque me da error
+
+***
+
+Aqui empezamos otra cosa
+
+> Esto es una cita en bloque
+
+### Listas no ordenadas
+
+* Item primero
+* Item segundo
+    + Sub ítem 2.1
+    + Sub ítem 2.2
+    + Sub ítem 2.3
+* Item tercero
+
+1. Item primero
+2. Item segundo
+    + Sub ítem 2.1
+    + Sub ítem 2.2
+    + Sub ítem 2.3
+3. Item tercero
+1. Item cuarto
+1. Ultimo ítem
+
+
+Alumno        |  Nota   |    Aprobado
+--------------|---------|----------
+Juan Gabriel  |   3.5   |     N
+Ricardo       |   5.6   |     S
+Maria         |   4.5   |     N

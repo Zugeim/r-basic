@@ -1,0 +1,21 @@
+---
+title: "R & Python"
+author: "Imanol"
+date: "10/2/2021"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+## Reticulate
+
+```{r}
+library(reticulate) # Me habilita esta libreria en este fichero
+use_python("/Users/Imano/anaconda3/python3.dll") 
+os <- import("os") # Importa una libreria de python y la guarda en una variable de R
+os$listdir(".") # Para ver todas las carpetas y archivos que tiene
+```
+
+
+
