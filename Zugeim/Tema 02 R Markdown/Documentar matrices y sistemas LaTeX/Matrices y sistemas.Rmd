@@ -1,0 +1,30 @@
+---
+title: "Matrices y sistemas"
+author: "Imanol"
+date: "10/2/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Matricez
+
+$$\begin{matrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{matrix}$$
+
+$$\begin{pmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{pmatrix}$$
+
+$$\begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{vmatrix}$$
+
+$$\begin{bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{bmatrix}$$
+
+$$\begin{Bmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{Bmatrix}$$
+
+$$\begin{Vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}\end{Vmatrix}$$
+
+## Sistemas de ecuaciones
+
+$$\left.\begin{array}{l} ax+by=c\\ ex-fy=g \end{array}\right\}$$
+
+$$|x|=\left\{\begin{array}{rr} -x & \text{si }x\le 0\\ x & \text{si }x\ge 0\end{array}\right.$$

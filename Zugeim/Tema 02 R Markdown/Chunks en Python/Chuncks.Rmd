@@ -1,0 +1,23 @@
+---
+title: "Chuncks"
+author: "Imanol"
+date: "10/2/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Chuncks en Python
+
+Podemos darle un nombre a cada chunck
+ctrl + alt + i para sacar el chunck automaticamente
+
+Vamos a calcular $\sqrt{2} - e^{2}$:
+```{r miPrimeraChunck}
+sqrt(2) - exp(-2)
+```
+
+
+
