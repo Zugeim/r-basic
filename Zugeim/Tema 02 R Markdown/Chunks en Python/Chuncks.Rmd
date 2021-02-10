@@ -11,13 +11,105 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Chuncks en Python
 
-Podemos darle un nombre a cada chunck
-ctrl + alt + i para sacar el chunck automaticamente
+Podemos darle un nombre a cada chunck.
+ctrl + alt + i para sacar el chunck automaticamente.
+
+### Parametro echo
+
+Nos dice si queremos mostrar o no el codigo, por defecto si no lo ponemos esta a true.
+
 
 Vamos a calcular $\sqrt{2} - e^{2}$:
-```{r miPrimeraChunck}
+```{r echoT}
 sqrt(2) - exp(-2)
 ```
 
+Vamos a calcular $\sqrt{2} - e^{2}$:
+```{r echoF, echo=FALSE}
+sqrt(2) - exp(-2)
+```
+
+### Parametro eval
+
+Nos dice si queremos evaluar o no el codigo (nos da o no el resultado, se ejecuta o no), por defecto si no lo ponemos esta a true.
 
 
+Vamos a calcular $\sqrt{2} - e^{2}$:
+```{r evalT}
+sqrt(2) - exp(-2)
+```
+
+Vamos a calcular $\sqrt{2} - e^{2}$:
+```{r evalF, eval=FALSE}
+sqrt(2) - exp(-2)
+```
+
+### Parametro message y warning
+
+message nos dice si se esta cargando una libreria, por defecto TRUE
+
+```{r messageT}
+library(magic)
+magic(6)
+```
+```{r messageF, message=FALSE}
+library(magic)
+magic(6)
+```
+
+### Parametro comment
+
+Nos quita los hastags si le ponemos comment = NA
+
+```{r commentF, comment=NA}
+library(magic)
+magic(6)
+```
+
+
+### Parametro results
+
+**El parametro hide nos oculta el resultado pero si se evalua**
+
+```{r resultsH, results='hide'}
+library(magic)
+magic(6)
+```
+
+**El parametro markup nos da el resultado con dos almohadillas (el que esta por defecto).**
+
+```{r resultsM, results='markup'}
+library(magic)
+magic(6)
+```
+
+**El parametro asis nos da el resultado tal cual en texto.**
+
+```{r resultsA, results='asis'}
+library(magic)
+magic(6)
+```
+
+**El parametro hold nos da los resultados todos al final.**
+
+Sin hold
+```{r resultsHoN}
+sqrt(2) - exp(-2)
+x=1:5
+sqrt(x)
+```
+
+Con hold
+```{r resultsHoS, results='hold'}
+sqrt(2) - exp(-2)
+x=1:5
+sqrt(x)
+```
+
+## Variables en medio de texto
+
+Cuando queremos hacer la raiz cuadrada de dos, podemos hacerlo:
+
+- En \LaTeX: $\sqrt{2}$ 
+- En `R` haciendo `r sqrt(2)`
+- La frase completa: $\sqrt{2}=$ `r sqrt(2)`
