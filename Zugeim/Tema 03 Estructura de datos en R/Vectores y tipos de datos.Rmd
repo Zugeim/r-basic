@@ -1,0 +1,45 @@
+---
+title: "Vectores y tipos de datos"
+author: "Imanol"
+date: "10/2/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Estructuras de datos
+
+## Basicos
+
+### Vectores
+```{r vectores}
+c(1,2,3) # Para definir un vector
+scan() # Para definir un vector por consola a mano
+##fix(c): # Para modificar visualmente un vector x
+rep(1,5) # Para definir un vector que tiene el mismo dato a (1) repetido n (5) veces
+```
+
+Para especificar como colocar los decimales -> scan(dec = ",")
+Para especificar que tipo de datos seran -> scan(what = "character")
+
+### Ejercicio
+
+Repetir mi año de nacimiento 10 veces
+```{r año10}
+anno <- 1993
+n <- 10
+rep(anno,n)
+```
+
+Crear un vector que tenga como entradas 16,0,1,20,1,7,88,5,1,9, llamalo **vec** y modifica la cuarta entrada con la funcion **fix()**.
+
+```{r}
+vec <- c(16, 0, 1, 20, 1, 7, 88, 5, 1, 9)
+vec
+fix(vec)
+vec
+```
+
+

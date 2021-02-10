@@ -1,0 +1,54 @@
+---
+title: "Progresiones y secuencias"
+author: "Imanol"
+date: "10/2/2021"
+output: pdf_document
+---
+
+# Progresiones y secuencias
+
+$$a_n = a_1 + (n-1)\cdot d$$
+
+
+Para generar una progresión aritmética de diferencia d que empieza en a hasta llegar a b
+```{r}
+seq(5, 60, by = 5) #Empieza en 5 acaba en 60 en pasos de 5
+seq(5, 60, by = 2.5)
+seq(60, 5, by = -5)# En saltos decrecientes
+
+```
+
+
+Define progresion aritmetica de longitud $n$ que va de $a$ a $b$ con diferencia $d$. Por tanto $d = \frac{(b-a)}{(n-1)}$
+```{r}
+seq(5,60, length.out=4)
+```
+
+Define progresion aritmetica de longitud $n$ y diferencia $d$ que empieza en $a$.
+```{r}
+seq(5,by=6, length.out=4)
+```
+
+Define la secuencia de numeros enteros(Z) consecutivos entre dos numeros a y b
+```{r}
+1:10
+-2:5
+-(2:5)
+```
+
+## Ejercicio
+
+Imprimid los números del 1 al 20
+```{r}
+1:20
+```
+
+Imprimid los 20 primeros numeros pares
+```{r}
+seq(2,by=2, length.out=20)
+```
+
+Imprimir 30 números equidistantes entre el 17 y el 98, mostrando solo 4 cifras significativas
+```{r}
+print(seq(17,98, length.out=30), 4)
+```
