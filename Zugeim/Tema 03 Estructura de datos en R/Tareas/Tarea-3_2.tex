@@ -1,0 +1,296 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Tarea 3: LaTeX y RMarkdown},
+  pdfauthor={\textbackslash mathcal Imanol\textbackslash{} Miguez},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Tarea 3: LaTeX y RMarkdown}
+\author{\(\mathcal Imanol\ Miguez\)}
+\date{11/2/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{preguntas}{%
+\section{Preguntas}\label{preguntas}}
+
+\hypertarget{pregunta-1}{%
+\subsection{Pregunta 1}\label{pregunta-1}}
+
+Realizad los siguientes productos de matrices siguiente en \(R\):
+\[A\cdot B\] \[B\cdot A\] \[(A\cdot B)^t\] \[B^t\cdot B\]
+\[(A\cdot B)^{-1}\] donde
+\[A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 4 & 3 & 2 & 1\\ 0 & 1 & 0 & 2\\ 3 & 0 & 4 & 0 \end{pmatrix}\ \ \ \ \ B = \begin{pmatrix} 4 & 3 & 2 & 1\\ 0 & 3 & 0 & 4\\ 1 & 2 & 3 & 4\\ 0 & 1 & 0 & 2 \end{pmatrix}\]
+
+Finalmente, escribe haciendo uso de \LaTeX~el resultado de los dos
+primeros productos de forma adecuada.
+
+Primero creamos las matrices mediante la sucesion de filas de vectores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A =}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\NormalTok{B =}\StringTok{ }\KeywordTok{rbind}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{4}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Despues realizamos las operaciones solicitadas. Para las
+multiplicaciones entre matrices usamos \(\%*\%\), para la traspuesta
+usamos \(t(M)\) y para la inversa \(solve(M)\).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{M1 =}\StringTok{ }\NormalTok{A}\OperatorTok{%*%}\NormalTok{B}
+\NormalTok{M2 =}\StringTok{ }\NormalTok{B}\OperatorTok{%*%}\NormalTok{A}
+\KeywordTok{t}\NormalTok{(A}\OperatorTok{%*%}\NormalTok{B)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    7   18    0   16
+## [2,]   19   26    5   17
+## [3,]   11   14    0   18
+## [4,]   29   26    8   19
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t}\NormalTok{(B)}\OperatorTok{%*%}\NormalTok{A}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    4    9   12   18
+## [2,]   18   17   19   19
+## [3,]    2    7    6   14
+## [4,]   23   18   19   16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{solve}\NormalTok{(A}\OperatorTok{%*%}\NormalTok{B)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       [,1]  [,2]  [,3]  [,4]
+## [1,] -1.66 -0.65  4.52  1.52
+## [2,]  1.60  0.80 -4.60 -1.60
+## [3,]  1.02  0.35 -2.84 -0.84
+## [4,] -1.00 -0.50  3.00  1.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{solve}\NormalTok{(A)}\OperatorTok{%*%}\KeywordTok{t}\NormalTok{(B)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               [,1] [,2] [,3] [,4]
+## [1,]  6.000000e-01  2.4  6.4  1.2
+## [2,] -3.330669e-16 -2.0 -7.0 -1.2
+## [3,] -2.000000e-01 -0.8 -3.8 -0.4
+## [4,]  1.000000e+00  1.0  5.0  0.6
+\end{verbatim}
+
+Los resultados son: - \$A\cdot B \$ 7, 18, 0, 16, 19, 26, 5, 17, 11, 14,
+0, 18, 29, 26, 8, 19
+
+\hypertarget{pregunta-2}{%
+\subsection{Pregunta 2}\label{pregunta-2}}
+
+Considerad en un vector los números de vuestro \(DNI\) y llamadlo
+\textbf{dni}. Por ejemplo, si vuestro \(DNI\) es 54201567K, vuestro
+vector será \[dni = (5,4,2,0,5,6,7)\]
+
+Definid el vector en \(R\). Calculad con \(R\) el vector dni al
+cuadrado, la raíz cuadrada del vector dni y, por último,la suma de todas
+las cifras del vector \textbf{dni}.
+
+Finalmente, escribid todos estos vectores también a \LaTeX
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dni =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+
+\NormalTok{dni}\OperatorTok{^}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 25 16  4  0  1 25 36 49
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(dni)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2.236068 2.000000 1.414214 0.000000 1.000000 2.236068 2.449490 2.645751
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(dni)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30
+\end{verbatim}
+
+\hypertarget{pregunta-3}{%
+\subsection{Pregunta 3}\label{pregunta-3}}
+
+Considerad el vector de las letras de vuestro nombre y apellido.
+Llamadlo \textbf{name}. Por ejemplo, en mi caso sería
+\[nombre = (M,A,R,I,A,S,A,N,T,O,S)\]
+
+Definid dicho vector en \(R\). Calculad el subvector que solo contenga
+vuestro nombre. Calculad también el subvector que contenga solo vuestro
+apellido. Ordenadlo alfabéticamente. Cread una matriz con este vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{name =}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"I"}\NormalTok{,}\StringTok{"M"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"N"}\NormalTok{,}\StringTok{"O"}\NormalTok{,}\StringTok{"L"}\NormalTok{,}\StringTok{"M"}\NormalTok{,}\StringTok{"I"}\NormalTok{,}\StringTok{"G"}\NormalTok{,}\StringTok{"U"}\NormalTok{,}\StringTok{"E"}\NormalTok{,}\StringTok{"Z"}\NormalTok{)}
+\NormalTok{name[}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "I" "M" "A" "N" "O" "L"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{name[}\DecValTok{7}\OperatorTok{:}\DecValTok{12}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "M" "I" "G" "U" "E" "Z"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sort}\NormalTok{(name)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "A" "E" "G" "I" "I" "L" "M" "M" "N" "O" "U" "Z"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rbind}\NormalTok{(name)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12]
+## name "I"  "M"  "A"  "N"  "O"  "L"  "M"  "I"  "G"  "U"   "E"   "Z"
+\end{verbatim}
+
+\end{document}

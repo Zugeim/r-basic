@@ -22,10 +22,10 @@ B = rbind(c(4,3,2,1),c(0,3,0,4),c(1,2,3,4),c(0,1,0,2))
 ```
 
 
-Despues realizamos las operciones solicitadas.
-```{r}
-A%*%B
-B%*%A
+Despues realizamos las operaciones solicitadas. Para las multiplicaciones entre matrices usamos $\%*\%$, para la traspuesta usamos $t(M)$ y para la inversa $solve(M)$.
+```{r pregunta1}
+M1 = A%*%B
+M2 = B%*%A
 t(A%*%B)
 t(B)%*%A
 solve(A%*%B)
@@ -33,6 +33,9 @@ solve(A)%*%t(B)
 
 ```
 
+Los resultados son:
+  - $A\cdot B $ `r M1`
+  
 ## Pregunta 2
 
 Considerad en un vector los números de vuestro $DNI$ y llamadlo **dni**. Por ejemplo, si vuestro $DNI$ es 54201567K, vuestro vector será $$dni = (5,4,2,0,5,6,7)$$
@@ -42,7 +45,7 @@ Definid el vector en $R$. Calculad con $R$ el vector dni al cuadrado, la raíz c
 
 Finalmente, escribid todos estos vectores también a \LaTeX
 
-```{r}
+```{r pregunta2}
 dni = c(5,4,2,0,1,5,6,7)
 
 dni^2
@@ -55,10 +58,10 @@ Considerad el vector de las letras de vuestro nombre y apellido. Llamadlo **name
 
 Definid dicho vector en $R$. Calculad el subvector que solo contenga vuestro nombre. Calculad también el subvector que contenga solo vuestro apellido. Ordenadlo alfabéticamente. Cread una matriz con este vector.
 
-```{r}
+```{r pregunta3}
 name = c("I","M","A","N","O","L","M","I","G","U","E","Z")
 name[1:6]
 name[7:12]
 sort(name)
-rbind(o)
+rbind(name)
 ```
