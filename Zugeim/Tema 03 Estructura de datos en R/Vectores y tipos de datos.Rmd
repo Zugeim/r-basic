@@ -416,7 +416,7 @@ M1 = rbind(c(1,4,2), c(0,1,3), c(1,8,9))
 det(M1)        # Determinante de una matriz
 qr(M1)$rank    # Da el rango de la matriz
 solve(M1)      # Calcula la inversa (solo si es invertible)
-                  # Tambien sirve para resolver ecuaciones lineales. Para ello introduciomos solve(matiz,b)
+                  # Tambien sirve para resolver ecuaciones lineales. Para ello introduciomos solve(matriz,b)
                   # donde b es la matriz de terminos independientes.
 round(solve(M1)%*%M1,2)  # Me da la matriz identidad
 
