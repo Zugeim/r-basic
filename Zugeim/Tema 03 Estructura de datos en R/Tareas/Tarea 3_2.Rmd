@@ -1,0 +1,64 @@
+---
+title: "Tarea 3: LaTeX y RMarkdown"
+author: $\mathcal Imanol\ Miguez$
+date: "11/2/2021"
+output: pdf_document
+---
+
+# Preguntas
+
+## Pregunta 1
+
+Realizad los siguientes productos de matrices siguiente en $R$:
+$$A\cdot B$$ $$B\cdot A$$ $$(A\cdot B)^t$$ $$B^t\cdot B$$ $$(A\cdot B)^{-1}$$
+donde $$A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 4 & 3 & 2 & 1\\ 0 & 1 & 0 & 2\\ 3 & 0 & 4 & 0 \end{pmatrix}\ \ \ \ \ B = \begin{pmatrix} 4 & 3 & 2 & 1\\ 0 & 3 & 0 & 4\\ 1 & 2 & 3 & 4\\ 0 & 1 & 0 & 2 \end{pmatrix}$$
+
+Finalmente, escribe haciendo uso de \LaTeX\ el resultado de los dos primeros productos de forma adecuada.
+
+Primero creamos las matrices mediante la sucesion de filas de vectores.
+```{r}
+A = rbind(c(1,2,3,4),c(4,3,2,1),c(0,1,0,2),c(3,0,4,0))
+B = rbind(c(4,3,2,1),c(0,3,0,4),c(1,2,3,4),c(0,1,0,2))
+```
+
+
+Despues realizamos las operciones solicitadas.
+```{r}
+A%*%B
+B%*%A
+t(A%*%B)
+t(B)%*%A
+solve(A%*%B)
+solve(A)%*%t(B)
+
+```
+
+## Pregunta 2
+
+Considerad en un vector los números de vuestro $DNI$ y llamadlo **dni**. Por ejemplo, si vuestro $DNI$ es 54201567K, vuestro vector será $$dni = (5,4,2,0,5,6,7)$$
+
+Definid el vector en $R$. Calculad con $R$ el vector dni al cuadrado, la raíz cuadrada del vector dni y, por último,la suma de todas las cifras del vector **dni**.
+
+
+Finalmente, escribid todos estos vectores también a \LaTeX
+
+```{r}
+dni = c(5,4,2,0,1,5,6,7)
+
+dni^2
+sqrt(dni)
+sum(dni)
+```
+## Pregunta 3
+
+Considerad el vector de las letras de vuestro nombre y apellido. Llamadlo **name**. Por ejemplo, en mi caso sería $$nombre = (M,A,R,I,A,S,A,N,T,O,S)$$
+
+Definid dicho vector en $R$. Calculad el subvector que solo contenga vuestro nombre. Calculad también el subvector que contenga solo vuestro apellido. Ordenadlo alfabéticamente. Cread una matriz con este vector.
+
+```{r}
+name = c("I","M","A","N","O","L","M","I","G","U","E","Z")
+name[1:6]
+name[7:12]
+sort(name)
+rbind(o)
+```
