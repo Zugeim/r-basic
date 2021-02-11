@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.10)  11 FEB 2021 12:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.10)  11 FEB 2021 13:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -559,16 +559,16 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 426.
 (c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [15] (./Vectores-y-tipos-de-datos.aux)
+) [15] [16] [17] [18] (./Vectores-y-tipos-de-datos.aux)
 Package rerunfilecheck Info: File `Vectores-y-tipos-de-datos.out' has not chang
 ed.
-(rerunfilecheck)             Checksum: A2A0EAC44255B5B72281F9300E8698F1;4811.
+(rerunfilecheck)             Checksum: B43175C47A9A1DEBB60B4BB3DF743A53;5493.
  ) 
 Here is how much of TeX's memory you used:
- 10579 strings out of 481288
- 155910 string characters out of 5915637
- 453973 words of memory out of 5000000
- 27218 multiletter control sequences out of 15000+600000
+ 10598 strings out of 481288
+ 156211 string characters out of 5915637
+ 454168 words of memory out of 5000000
+ 27226 multiletter control sequences out of 15000+600000
  460272 words of font info for 72 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,7n,74p,532b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -594,10 +594,10 @@ rs/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb><c
 :/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtti10.
 pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfo
 nts/symbols/msbm10.pfb>
-Output written on Vectores-y-tipos-de-datos.pdf (15 pages, 266986 bytes).
+Output written on Vectores-y-tipos-de-datos.pdf (18 pages, 273265 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 278 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 249 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 347 PDF objects out of 1000 (max. 8388607)
+ 309 compressed objects within 4 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 281 words of extra memory for PDF output out of 10000 (max. 10000000)
 

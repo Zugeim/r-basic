@@ -373,20 +373,20 @@ Para sacar datos especificos de la matriz
 M = matrix(1:12, nrow = 4)
 M
 
-M[1,2] # Un dato
-M[2, ] # TOdos los datos de una fila
-M[,3]  # Todos los datos de una columna
+M[1,2]           # Un dato
+M[2, ]           # TOdos los datos de una fila
+M[,3]            # Todos los datos de una columna
 M[c(1,3,4), 1:2] # Datos de filas concretas y que columnas
 
-nrow(M) # Da numero filas
-ncol(M) # Numero columnas
-dim(M) # Dimension
+nrow(M)          # Da numero filas
+ncol(M)          # Numero columnas
+dim(M)           # Dimension
 
-sum(M)  # Suma de todos los datos de la matriz
-prod(M) # producto de todos los datos de la matriz
-mean(M) # media de todos los datos de la matriz
+sum(M)           # Suma de todos los datos de la matriz
+prod(M)          # producto de todos los datos de la matriz
+mean(M)          # media de todos los datos de la matriz
 
-colSums(M) # suma de todas las columnas
+colSums(M)       # suma de todas las columnas
 rowSums(M)
 colMeans(M)
 
@@ -396,5 +396,76 @@ colMeans(M)
 ```{r}
 apply(M, MARGIN = 1, FUN = function(x){sqrt(sum(x^2))}) # MARGIN = 1 es para aplicar funcion por filas, 
 apply(M, MARGIN = 2, FUN = function(x){sqrt(sum(x^2))}) # MARGIN = 2 es para aplicar funcion por columnas
+```
+
+# REPASO ALGEBRA LINEAL
+
+## OPERACIONES
+```{r}
+M = matrix(1:12, nrow = 4)
+M
+
+t(M)          #Traspuesta
+
+M%*%t(M)      # Multiplicacion de matrices
+
+#mtx.exp(M,2) # Para elevar la matriz (paquete Biodem), no es exacto aproxima
+M%^%2         # Para elevar la matriz (Paquete expm), no es exacto aproxima
+
+M1 = rbind(c(1,4,2), c(0,1,3), c(1,8,9))
+det(M1)        # Determinante de una matriz
+qr(M1)$rank    # Da el rango de la matriz
+solve(M1)      # Calcula la inversa (solo si es invertible)
+                  # Tambien sirve para resolver ecuaciones lineales. Para ello introduciomos solve(matiz,b)
+                  # donde b es la matriz de terminos independientes.
+round(solve(M1)%*%M1,2)  # Me da la matriz identidad
+
+```
+
+## EJERCICIO
+
+Observar qué ocurre si, siendo $A = \begin{pmatrix} 2 & 0 & 2 \\ 1 &2 & 3\\ 0 & 1 & 3\end{pmatrix}$ y $B = \begin{pmatrix} 3 & 2 & 1 \\ 1 & 0 & 0\\ 1 & 1 & 1\end{pmatrix}$, realizamos las operaciones $A*B$, $A^2$ y $B^3$.
+
+```{r}
+A = rbind(c(2,0,2),c(1,2,3),c(0,1,3))
+A
+B = rbind(c(3,2,1),c(1,0,0),c(1,1,1))
+B
+
+# Producto A*B
+A%*%B
+
+# Dos maneras de elevar
+
+  # Primera
+  A%^%2
+  B%^%3
+
+  # Segunda
+  A%*%A
+  B%*%B%*%B
+
+```
+
+## VALORES Y VECTORES PROPIOS
+```{r}
+M = rbind(c(2,6,-8), c(0,6,-3), c(0,2,1))
+eigen(M)        # Calcula valores y vectores propios
+eigen(M)$values # Da los valores propios de la matriz en orden decreciente 
+eigen(M)$vectors # Da una matriz cuyas columnas son los vectores propios de la matriz
+```
+
+## EJERCICIO 
+
+Comprobar que si $P$ es la matriz de vectores propios $M$ en columna y D la matriz diagonal cuyas entradas son los valores propios de $M$, entonces se cumple la siguiente igualdad llamada **descomposición canónica**: $$M = P \cdot D\cdot P^{-1} $$
+
+```{r}
+eigen(M)
+P = eigen(M)$vectors
+P
+D = diag(eigen(M)$values)
+D
+
+M == round(P%*%D%*%solve(P),2) # Lo redondeo para que no me de problemas con numeros muy muy pequeños
 ```
 
