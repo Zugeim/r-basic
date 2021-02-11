@@ -10,7 +10,7 @@ output: pdf_document
 $$a_n = a_1 + (n-1)\cdot d$$
 
 
-Para generar una progresión aritmética de diferencia d que empieza en a hasta llegar a b
+Para generar una progresión aritmética de diferencia $d$ que empieza en $a$ hasta llegar a &b&
 ```{r}
 seq(5, 60, by = 5) #Empieza en 5 acaba en 60 en pasos de 5
 seq(5, 60, by = 2.5)
@@ -29,7 +29,7 @@ Define progresion aritmetica de longitud $n$ y diferencia $d$ que empieza en $a$
 seq(5,by=6, length.out=4)
 ```
 
-Define la secuencia de numeros enteros(Z) consecutivos entre dos numeros a y b
+Define la secuencia de numeros enteros $\mathbb{Z}$ consecutivos entre dos numeros $a$ y $b$
 ```{r}
 1:10
 -2:5

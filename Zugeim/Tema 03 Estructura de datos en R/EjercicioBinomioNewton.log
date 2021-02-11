@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.10)  10 FEB 2021 15:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.10)  11 FEB 2021 10:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Progresiones-y-Secuencias.tex
-(./Progresiones-y-Secuencias.tex
+**EjercicioBinomioNewton.tex
+(./EjercicioBinomioNewton.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-06> (c:/Users/Imano/AppData/Roaming/TinyTeX/texmf
 -dist/tex/latex/base/article.cls
@@ -407,9 +407,8 @@ d-pdftex.def
 File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count279
 \l__pdf_internal_box=\box50
-)
-No file Progresiones-y-Secuencias.aux.
-\openout1 = `Progresiones-y-Secuencias.aux'.
+) (./EjercicioBinomioNewton.aux)
+\openout1 = `EjercicioBinomioNewton.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
 LaTeX Font Info:    ... okay on input line 107.
@@ -460,8 +459,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 107.
 LaTeX Info: Redefining \pageref on input line 107.
 LaTeX Info: Redefining \nameref on input line 107.
+(./EjercicioBinomioNewton.out) (./EjercicioBinomioNewton.out)
 \@outlinefile=\write4
-\openout4 = `Progresiones-y-Secuencias.out'.
+\openout4 = `EjercicioBinomioNewton.out'.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -540,24 +540,55 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 113.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-21.
+19.
 (c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 122.
-! Undefined control sequence.
-<argument> ...rogresion aritmetica de longitud \n 
-                                                  que va de a a b con difere...
-l.154 ...on-diferencia-d.-por-tanto-d-fracb-an-1}}
-                                                   
-Here is how much of TeX's memory you used:
- 10389 strings out of 481288
- 152610 string characters out of 5915637
- 439296 words of memory out of 5000000
- 27123 multiletter control sequences out of 15000+600000
- 446676 words of font info for 67 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 71i,6n,74p,323b,300s stack positions out of 5000i,500n,10000p,200000b,80000s
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 120.
 
-!  ==> Fatal error occurred, no output PDF file produced!
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 144.
+
+[1
+
+{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
+x.map}] (./EjercicioBinomioNewton.aux)
+Package rerunfilecheck Info: File `EjercicioBinomioNewton.out' has not changed.
+
+(rerunfilecheck)             Checksum: 5260984B68D25FF158DB03D07C9B0697;490.
+ ) 
+Here is how much of TeX's memory you used:
+ 10414 strings out of 481288
+ 153011 string characters out of 5915637
+ 444622 words of memory out of 5000000
+ 27130 multiletter control sequences out of 15000+600000
+ 443359 words of font info for 65 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 71i,6n,74p,441b,323s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-math
+sy.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm
+-mathex.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/
+lm/lm-mathit.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/d
+vips/lm/lm-ec.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/
+dvips/lm/lm-rm.enc}<c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/typ
+e1/public/lm/lmbx12.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/font
+s/type1/public/lm/lmex10.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist
+/fonts/type1/public/lm/lmmi10.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/texmf
+-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/t
+exmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/Imano/AppData/Roaming/TinyT
+eX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/Imano/AppData/Roaming/T
+inyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/Imano/AppData/Roami
+ng/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/Imano/AppData/Ro
+aming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/Imano/AppDa
+ta/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/Users/Imano/A
+ppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><c:/Users/Im
+ano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on EjercicioBinomioNewton.pdf (1 page, 172252 bytes).
+PDF statistics:
+ 91 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+
