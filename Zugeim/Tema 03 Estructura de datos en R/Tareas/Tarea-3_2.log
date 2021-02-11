@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.10)  11 FEB 2021 20:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.10)  11 FEB 2021 22:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -407,8 +407,7 @@ d-pdftex.def
 File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count279
 \l__pdf_internal_box=\box50
-)
-No file Tarea-3_2.aux.
+) (./Tarea-3_2.aux)
 \openout1 = `Tarea-3_2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
@@ -460,6 +459,7 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 107.
 LaTeX Info: Redefining \pageref on input line 107.
 LaTeX Info: Redefining \nameref on input line 107.
+(./Tarea-3_2.out) (./Tarea-3_2.out)
 \@outlinefile=\write4
 \openout4 = `Tarea-3_2.out'.
 
@@ -540,28 +540,62 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 116.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-27.
+26.
 (c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 128.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 127.
 [1
 
 {c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
 x.map}]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.195 Los resultados son: - \$A\cdot
-                                     B \$ 7, 18, 0, 16, 19, 26, 5, 17, 11, 14, 
-Here is how much of TeX's memory you used:
- 10396 strings out of 481288
- 152556 string characters out of 5915637
- 448367 words of memory out of 5000000
- 27123 multiletter control sequences out of 15000+600000
- 449349 words of font info for 67 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 71i,8n,74p,631b,349s stack positions out of 5000i,500n,10000p,200000b,80000s
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
+24.
+(c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [2] [3]
 
-!  ==> Fatal error occurred, no output PDF file produced!
+LaTeX Warning: Command \' invalid in math mode on input line 329.
+
+[4] (./Tarea-3_2.aux)
+Package rerunfilecheck Info: File `Tarea-3_2.out' has not changed.
+(rerunfilecheck)             Checksum: 2F9C100A3A76F717DF7A49F23A1D8F99;410.
+ ) 
+Here is how much of TeX's memory you used:
+ 10454 strings out of 481288
+ 153717 string characters out of 5915637
+ 453761 words of memory out of 5000000
+ 27161 multiletter control sequences out of 15000+600000
+ 452709 words of font info for 69 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 71i,8n,74p,631b,382s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
+nc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1
+.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-m
+athex.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm
+/lm-rm.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/l
+m/lm-mathsy.enc}{c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dv
+ips/lm/lm-mathit.enc}<c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/t
+ype1/public/lm/lmbx10.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fo
+nts/type1/public/lm/lmbx12.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-di
+st/fonts/type1/public/lm/lmex10.pfb><c:/Users/Imano/AppData/Roaming/TinyTeX/tex
+mf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/Imano/AppData/Roaming/TinyTe
+X/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/Users/Imano/AppData/Roaming/T
+inyTeX/texmf-dist/fonts/type1/public/lm/lmmi7.pfb><c:/Users/Imano/AppData/Roami
+ng/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/Imano/AppData/R
+oaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/Imano/AppDa
+ta/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/Imano/A
+ppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/Iman
+o/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users
+/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy7.pfb><c:/U
+sers/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtk10.pfb>
+<c:/Users/Imano/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10
+.pfb>
+Output written on Tarea-3_2.pdf (4 pages, 223498 bytes).
+PDF statistics:
+ 117 PDF objects out of 1000 (max. 8388607)
+ 96 compressed objects within 1 object stream
+ 13 named destinations out of 1000 (max. 500000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+

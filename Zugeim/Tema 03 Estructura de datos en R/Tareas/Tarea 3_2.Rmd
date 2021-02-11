@@ -9,11 +9,13 @@ output: pdf_document
 
 ## Pregunta 1
 
-Realizad los siguientes productos de matrices siguiente en $R$:
+Realizad los siguientes productos de matrices en $R$:
 $$A\cdot B$$ $$B\cdot A$$ $$(A\cdot B)^t$$ $$B^t\cdot B$$ $$(A\cdot B)^{-1}$$
 donde $$A = \begin{pmatrix} 1 & 2 & 3 & 4\\ 4 & 3 & 2 & 1\\ 0 & 1 & 0 & 2\\ 3 & 0 & 4 & 0 \end{pmatrix}\ \ \ \ \ B = \begin{pmatrix} 4 & 3 & 2 & 1\\ 0 & 3 & 0 & 4\\ 1 & 2 & 3 & 4\\ 0 & 1 & 0 & 2 \end{pmatrix}$$
 
 Finalmente, escribe haciendo uso de \LaTeX\ el resultado de los dos primeros productos de forma adecuada.
+
+
 
 Primero creamos las matrices mediante la sucesion de filas de vectores.
 ```{r}
@@ -24,8 +26,8 @@ B = rbind(c(4,3,2,1),c(0,3,0,4),c(1,2,3,4),c(0,1,0,2))
 
 Despues realizamos las operaciones solicitadas. Para las multiplicaciones entre matrices usamos $\%*\%$, para la traspuesta usamos $t(M)$ y para la inversa $solve(M)$.
 ```{r pregunta1}
-M1 = A%*%B
-M2 = B%*%A
+A%*%B
+B%*%A
 t(A%*%B)
 t(B)%*%A
 solve(A%*%B)
@@ -34,7 +36,12 @@ solve(A)%*%t(B)
 ```
 
 Los resultados son:
-  - $A\cdot B $ `r M1`
+
+  - $A\cdot B = \begin{pmatrix} 7 & 19 & 11 & 29\\ 18 & 26 & 14 & 26\\ 0 & 5 & 0 & 8\\ 16 & 17 & 18 & 19 \end{pmatrix}$
+  
+  
+  - $B\cdot A = \begin{pmatrix} 19 & 19 & 22 & 23\\ 24 & 9 & 22 & 3\\ 21 & 11 & 23 & 12\\ 10 & 3 & 10 & 1 \end{pmatrix}$
+  
   
 ## Pregunta 2
 
@@ -52,16 +59,36 @@ dni^2
 sqrt(dni)
 sum(dni)
 ```
+
+Los resultados son:
+
+  - $dni^2 =$ `r dni^2`
+  - $\sqrt{dni}$ `r sqrt(dni)`
+  - $\sum dni$ `r sum(dni)`
+  
 ## Pregunta 3
 
 Considerad el vector de las letras de vuestro nombre y apellido. Llamadlo **name**. Por ejemplo, en mi caso sería $$nombre = (M,A,R,I,A,S,A,N,T,O,S)$$
 
 Definid dicho vector en $R$. Calculad el subvector que solo contenga vuestro nombre. Calculad también el subvector que contenga solo vuestro apellido. Ordenadlo alfabéticamente. Cread una matriz con este vector.
 
+Para escoger la primera y la segunta parte se hace uso del vector creado y se escoge que de por salida los rangos de letras de interes.
+Para ordenar las letras se hace uso de $sort(M)$ y para crear una matriz con las dos primeros vectores vuelve a usarse $rbind(vecto1,..)$.
+
 ```{r pregunta3}
 name = c("I","M","A","N","O","L","M","I","G","U","E","Z")
-name[1:6]
-name[7:12]
-sort(name)
-rbind(name)
+name[1:6]  -> n
+name[7:12] -> a
+sort(name) -> o
+rbind(name[1:6],name[7:12]) -> M
+M
 ```
+
+Los resultados son:
+
+  - $nombre =$ `r n[1]``r n[2]``r n[3]``r n[4]``r n[5]``r n[6]`
+  - $apellido =$ `r a[1]``r a[2]``r a[3]``r a[4]``r a[5]``r a[6]`
+  - $Ordenado\ alfabéticamente =$ `r o`
+  - $Matriz = \begin{pmatrix} I & M & A & N & O & L\\ M & I & G & U & E & Z \end{pmatrix}$
+  
+  
