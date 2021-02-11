@@ -11,9 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Estructuras de datos
 
-## Basicos
+# Basicos
 
-### Vectores
+## Vectores
 ```{r vectores}
 c(1,2,3) # Para definir un vector
 scan() # Para definir un vector por consola a mano
@@ -24,7 +24,7 @@ rep(1,5) # Para definir un vector que tiene el mismo dato a (1) repetido n (5) v
 Para especificar como colocar los decimales -> scan(dec = ",")
 Para especificar que tipo de datos seran -> scan(what = "character")
 
-### Ejercicio
+## Ejercicio
 
 Repetir mi año de nacimiento 10 veces
 ```{r año10}
@@ -42,9 +42,9 @@ fix(vec)
 vec
 ```
 
-## Mas operaciones con vectores
+# Mas operaciones con vectores
 
-### Operaciones directas aplicadas a un vector
+## Operaciones directas aplicadas a un vector
 ```{r}
 x <- 1:10
 x + pi # Suma pi a todos
@@ -62,7 +62,7 @@ x
 ```
 
 
-### Operaciones que no se pueden hacer directamente a un vector (uso de sapply)
+## Operaciones que no se pueden hacer directamente a un vector (uso de sapply)
 
 Ejemplo básico:
 ```{r}
@@ -77,7 +77,7 @@ cd(6)
 cd(7)
 ```
 
-## Más funciones
+# Más funciones
 ```{r}
 v = c(1,2,3,4,5,6)
 mean(v) # media
@@ -96,7 +96,7 @@ cumprod(v) # El producto acumulado
 diff(v) # La diferencia de uno a otro numero
 ```
 
-### Ejercicio
+## Ejercicio
 
 Combinad las dos funciones, __sort__ y __rev__ para crear una funcion que dado un vector $x$ os lo devuelva ordenado en orden decreciente.
 ```{r}
@@ -109,5 +109,148 @@ x
 y <- c(2,4,3,1,7,8,5,9,6,0)
 y <- sort(y, decreasing = TRUE) # Al decirle decreasing TRUE hago que lo ordene en orden decreciente
 y
+```
+
+# SUBVECTORES Y FILTROS
+
+```{r}
+x = seq(3, 50, by = 3.5)
+x
+x[3] # Para sacar el dato de una posicion
+x[length(x)] # Para ir al ultimo valor
+x[length(x)-1] # Para ir al penultimo valor
+x[-3] # Para quitar el valor de esa posicion
+x[4:8] # Para quedarme solo en el rango que quiero de posiciones
+x[8:4]
+
+x[seq(2, length(x), by = 2)] # Para coger solo las posiciones pares
+x[seq(1, length(x), by = 2)] # Para coger solo las posiciones impares
+x[-seq(1, length(x), by = 2)] # Elimar posiciones impares
+x[(length(x)-3):length(x)] # Para sacar solo las posiciones de antepenultima a ultima posicion
+
+x[c(1,2,4)]
+x[x>20 & x<40] # Escoger solo los numeros mayores de 20 y menores de 40 
+x[x%%2==0] #Sacar solo numeros pares
+x>30 # Nos da true o false de los que cumplen o no
+x = c(1,7,4,2,4,8,9,2,0)
+y = c(5,2,-3,-7,-1,4,-2,7,1)
+x[y>0] # Ambos vectores deben ser del mismo tamaño, nos saca los valores en x 
+       # de las posiciones de los numeros de y que cumplen la condición
+
+which(x>4) # me da la posicion de los que son mayores de 4
+x[which(x>4)] # da los valores que cumplen la condicion
+which.min(x) # La posicion del valor mas pequeño
+which.max(x)
+which(x == max(x)) # Posiciones de los valores iguales al valor mas grande
+
+x = c() # Vector vacio, NULL
+x
+y = NULL
+y
+z = c(x, 2, y, 7) # los null no salen
+z
+```
+
+# LOS VALORES DE NA
+
+
+## PASARTE DEL RANGO DEL VECTOR
+```{r}
+x <- c(1:10)
+x[length(x)+5] = 9 # Me pone un 9 en la ultima posicion mas cinco 
+                   # pero como solo hay 10 posiciones en el resto pone NA
+x
+```
+
+
+## OPERACIONES TENIENDO NA
+```{r}
+sum(x) # No se puede, da NA
+sum(x, na.rm = TRUE) # no tiene en cuenta los NA y hace la suma
+mean(x, na.rm = TRUE)
+
+is.na(x) # Me dice si hay NA
+which(is.na(x)) # Posiciones en las que hay NA
+```
+
+En estadistica descriptiva no se puede trabajar con NA asi que se sustituyen por la media
+
+```{r}
+y = x
+y[is.na(y)]
+y[is.na(y)] = mean(y, na.rm = TRUE)
+y
+```
+
+
+### Cumsum con NA
+
+```{r}
+cumsum(x[!is.na(x)])
+```
+
+
+### Atributos y su eliminación
+
+```{r}
+x_clean = na.omit(x) #Elimina los na
+x_clean # Se puede ver que elimina los na pero se queda con el atributo "na.action"
+attr(x_clean, "na.action") = NULL # Asi elimino el atributo
+x_clean
+```
+
+
+# FACTORES
+
+Un factor es una lista que tiene copias de las etiquetas colocadas *(Levels)*
+
+```{r}
+nombres = c("Juan", "Antonio", "Maria", "Paco")
+nombres
+nombres.factor = factor(nombres) # Convierto el vector enun factor
+nombres.factor
+```
+
+## EJEMPLOS CON NIVELES
+```{r}
+gender = c("M", "H", "H", "M", "M", "M", "M", "H", "H")
+gender.fact = factor(gender)
+gender.fact
+
+gender.fact3 = factor(gender, levels = c("M", "H", "B")) # Si quiero darle mas etiquetas
+gender.fact3
+
+gender.fact4 = factor(gender, levels = c("M", "H", "B"), labels = c("Mujer", "Hombre", "Hermafrodita"))
+gender.fact4 # Cambia todas las etiquetas con su nombre completo para que sea mas facil entender
+
+levels(gender.fact4) # Para ver sus niveles
+
+levels(gender.fact4) = c("Femenino", "Masculino", "Híbrido") # Para cambiar de nombre las etiquetas
+gender.fact4
+
+notas = c(1,4,3,2,3,2,4,3,1,2,3,4,2,3,4)
+notas.factor = factor(notas)
+notas.factor
+levels(notas.factor)
+levels(notas.factor) = c("Suspendido", "Suficiente", "Notable", "Excelente")
+levels(notas.factor)
+```
+
+## UNIR NIVELES
+
+```{r}
+notas.factor = factor(notas)
+levels(notas.factor) = c("Suspendido", "Aprobado", "Aprobado", "Aprobado")
+notas.factor
+```
+
+## FACTOR ORDENADO
+
+Es un factor donde los niveles siguen un orden
+
+```{r}
+ordered(notas, labels = c("Sus", "Suf", "Not", "Exc")) # Hemos sustituido los valores por su etiqueta pero
+                                                       # ahora los niveles estan ordenados de menor a mayor
+
 ```
 
