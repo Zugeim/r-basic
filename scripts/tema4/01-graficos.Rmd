@@ -62,6 +62,7 @@ f <- function(x){
   x^2 -2*x + sqrt(abs(x))
 }
 plot(f, xlim = c(-3,3))
+
 points(0,0, pch = 19)
 points(-3:3, (-3:3)^2, col = "blue")
 abline(2,3, lty = "dashed", col = "red")
@@ -106,3 +107,41 @@ legend("bottomright",
        )
 ```
 
+# AÑADIR TEXTO Y CURVAS A UN GRAFICO
+## TEXTOS
+```{r}
+plot(0,0)
+text(0,0, labels = "debajo", pos = 1)
+text(0,0, labels = "izquierda", pos = 2)
+text(0,0, labels = "arriba", pos = 3)
+text(0,0, labels = "derecha", pos = 4)
+points(0,1)
+text(0,1, labels = "centro")
+```
+
+## CURVAS
+```{r}
+f <- function(x){x^2}
+plot(f, xlim = c(-3,3), ylim = c(-10, 10))
+points(-3:3, f(-3:3), pch = 19)
+lines(-3:3, f(-3:3), lwd = 2, lty = "dotted", col = "red")
+curve(x^3, lty = "dashed", col = "blue", add = TRUE)
+curve(x^4, lty = "dashed", col = "orangered", add = TRUE)
+```
+
+
+# LAS LEYENDAS DE LOS GRÁFICOS
+```{r}
+f <- function(x){x^2}
+plot(f, xlim = c(-3,3), ylim = c(-10, 10))
+points(-3:3, f(-3:3), pch = 19)
+lines(-3:3, f(-3:3), lwd = 2, lty = "dotted", col = "red")
+curve(x^3, lty = "dashed", col = "blue", add = TRUE)
+curve(x^4, lty = "dashed", col = "orangered", add = TRUE)
+legend("bottomright", 
+       legend = c(expression(x^2), expression(x^2), expression(x^4)), 
+       lwd = 2, 
+       col = c("red", "blue", "orangered"), 
+       lty = c("dotted", "dashed", "dashed")
+      )
+```
