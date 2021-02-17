@@ -1,0 +1,33 @@
+---
+title: "Tarea8"
+author: "Imanol"
+date: "17/2/2021"
+output: pdf_document
+---
+
+Carga en R o en Python el CSV de la web ["Pincha aquí"](http://winterolympicsmedals.com/medals.csv) y responde a las preguntas de la tarea.
+
+
+**Preguntas de esta tarea**
+
+1. ¿Cuantos deportistas aparecen en el data frame?
+
+2. ¿Cuantos han ganado medallas de oro, cuantos de plata y cuantos de bronce?
+
+3. ¿En cuantos lugares se han hecho olimpiadas de invierno?
+
+4. ¿Cuantos hombres y cuantas mujeres hay?
+
+5. ¿En qué año participaron más deportistas?
+
+6. El campo NOC indica el país del ganador de la medalla. ¿Qué país puede presumir de haber ganado más medallas de oro en los juegos de invierno entre 1960 y 1996?
+
+```{r dfload}
+df2 = read.table("https://maitra.public.iastate.edu/stat501/datasets/bulls.dat",
+                 header = FALSE, 
+                col.names = c("breed", "sale_price", "shoulder",
+                          "fat_free", "percent_ff", "frame_scale",
+                          "back_fat", "sale_height", "sale_weight"),
+                sep = "", dec = ".")
+```
+
