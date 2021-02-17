@@ -2,7 +2,10 @@
 title: "Tarea8"
 author: "Imanol"
 date: "17/2/2021"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 Carga en R o en Python el CSV de la web ["Pincha aquí"](http://winterolympicsmedals.com/medals.csv) y responde a las preguntas de la tarea.
@@ -22,12 +25,61 @@ Carga en R o en Python el CSV de la web ["Pincha aquí"](http://winterolympicsme
 
 6. El campo NOC indica el país del ganador de la medalla. ¿Qué país puede presumir de haber ganado más medallas de oro en los juegos de invierno entre 1960 y 1996?
 
-```{r dfload}
-df2 = read.table("https://maitra.public.iastate.edu/stat501/datasets/bulls.dat",
-                 header = FALSE, 
-                col.names = c("breed", "sale_price", "shoulder",
-                          "fat_free", "percent_ff", "frame_scale",
-                          "back_fat", "sale_height", "sale_weight"),
-                sep = "", dec = ".")
+```{r loadDataFrame}
+df = read.csv("http://winterolympicsmedals.com/medals.csv", header = TRUE)
+
+str(df)
+names(df)
 ```
 
+```{r pregunta1}
+nDeportistas = nrow(df)
+nDeportistas
+```
+
+```{r pregunta2}
+
+sum(df$Medal == "Gold")
+table(df$Medal == "Gold")
+
+sum(df$Medal == "Silver")
+table(df$Medal == "Silver")
+
+sum(df$Medal == "Bronze")
+table(df$Medal == "Bronze")
+```
+
+```{r pregunta3}
+levels(df$City)
+length(levels(df$City))
+```
+
+```{r pregunta4}
+sum(df$Event.gender == "M")
+table(df$Event.gender == "M")
+
+sum(df$Event.gender == "W")
+table(df$Event.gender == "W")
+```
+
+```{r pregunta5}
+table(df$Year)
+which.max(table(df$Year))
+```
+
+
+```{r pregunta5_alternativo}
+tabla = table(df$Year)
+names(tabla[tabla == max(tabla)])
+```
+
+
+```{r pregunta6}
+df2 = df[df$Year>=1960 & df$Year<=1996,]
+head(sort(table(df2$NOC[df$Medal == "Gold"]), dec = TRUE), n=1L)
+```
+
+```{r pregunta6_alternativoRevisar}
+tabla = table(df$NOC)
+names(tabla[tabla == max(tabla)])
+```
