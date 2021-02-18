@@ -1,5 +1,5 @@
 ---
-title: "Tarea 3: LaTeX y RMarkdown"
+title: "Tarea 4: LaTeX y RMarkdown"
 author: $\mathcal Imanol\ Miguez$
 date: "11/2/2021"
 output: pdf_document
