@@ -1,0 +1,35 @@
+---
+title: "03 - people"
+author: "Imanol"
+date: "19/2/2021"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+# Ejemplo de color de ojos y de pelo
+
+```{r}
+HairEyeColor # No es un data frame, ya es una tabla
+
+sum(HairEyeColor) -> total
+```
+
+El total de individuos de la tabla de datos es `r total`.
+
+```{r}
+prop.table(HairEyeColor, margin = 3)
+prop.table(HairEyeColor, margin = c(1,2))
+```
+
+```{r}
+aperm(HairEyeColor, perm = c("Sex", "Hair", "Eye"))
+```
+
+```{r}
+# Para mostrar de manera más bonita
+library(kableExtra)
+kable(HairEyeColor)
+```
+
