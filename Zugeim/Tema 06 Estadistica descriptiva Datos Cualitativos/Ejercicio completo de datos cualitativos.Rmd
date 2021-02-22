@@ -10,11 +10,14 @@ output: pdf_document
 ## Juntar color de ojos y pelo sin distinguir por sexo
 
 ```{r}
+HairEyeColor
+str(HairEyeColor)
 ftable(HairEyeColor)
 male <- HairEyeColor[, ,"Male"]
 female <- HairEyeColor[, ,"Female"]
 data <- as.table(male+female)
 data
+str(data)
 ```
 
 ## Manipulación de datos

@@ -19,7 +19,7 @@ sum(HairEyeColor) -> total
 El total de individuos de la tabla de datos es `r total`.
 
 ```{r}
-prop.table(HairEyeColor, margin = 3)
+prop.table(HairEyeColor, margin = 3) # Fracuencias relativas en funcion del genero
 prop.table(HairEyeColor, margin = c(1,2))
 ```
 
