@@ -18,6 +18,9 @@ barplot(df$density, beside = TRUE,
         main = "Diagrama de barras\n \"density\""
         )
 ```
+
+## Hecho por el profe
+
 ```{r}
 barplot(table(df$density))
 ```
