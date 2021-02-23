@@ -1,0 +1,21 @@
+---
+title: "Tarea 11"
+author: "Imanol"
+date: "23/2/2021"
+output: pdf_document
+---
+
+#7. La tabla "DNase" es uno de los data frames que tiene predefinidos R. Dad la instrucción que dibuje un diagrama de barras básico de la variable "density" de este mismo data frame
+```{r}
+df = DNase
+df
+df$density
+```
+```{r}
+barplot(df$density, beside = TRUE,
+        legend.text = TRUE, ylim = c(0, 2.5),
+        col = c("black", "burlywood4", "red"),
+        main = "Diagrama de barras\n \"density\""
+        )
+```
+
