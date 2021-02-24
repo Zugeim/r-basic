@@ -1,0 +1,151 @@
+---
+title: "Tarea 12"
+author: "Imanol"
+date: "24/2/2021"
+output: pdf_document
+---
+
+Carga el conjunto de datos de la carpeta data llamado grades.txt en R y responde a las siguientes preguntas
+```{r}
+data = read.table("../../data/grades.txt")
+head(data)
+str(data)
+```
+
+
+**Preguntas de esta tarea**
+
+# YO
+
+## 1. Calcula la media, la mediana y la moda redondeada a dos cifras decimales de las notas numéricas de los exámenes tanto de forma conjunta como por estudio universitario. ¿En qué grupo observamos la nota más alta? ¿Qué grupo está por encima de la media de estudiantes?
+```{r}
+round(mean(data$nota),2)
+round(median(data$nota),2)
+round(as.numeric(names(which(table(data$nota)==max(table(data$nota))))),2)
+
+round(by(data$nota, data$estudio, FUN = mean),2)
+round(by(data$nota, data$estudio, FUN = median),2)
+
+# Mates tiene la nota más alta
+# Informática y Mates estan por encima de la media de estudiantes
+```
+
+
+## 2. ¿En qué grupo observamos más variación de notas? Justifica tu respuesta
+```{r}
+by(data$nota, data$estudio, FUN = var)
+by(data$nota, data$estudio, FUN = sd)
+by(data$nota, data$estudio, FUN = IQR)
+# El grupo con más variación de las notas es el de Mates ya que tiene una una varianza mayor y por lo tanto una desviación estandar mayor
+```
+
+
+## 3. ¿Hay mucha diferencia entre el grupo que has respondido en el ejercicio 1 y en el ejercicio 2? Intenta dar una explicación objetiva del suceso
+No hay mucha diferencia con el grupo de Mates pero en el grupo de Informatica escogido en la pregunta 1 si hay diferencia. Se puede deducir de los datos que Mates tiene una media ligeramente superior a Informática pero Informática varia mucho menos en las notas.
+
+
+## 4. Dibuja en un único gráfico los cuatro diagramas de caja, uno para cada grupo. Añade así mismo la nota media, pon nombre, título y color al gráfico para documentar el gráfico correctamente.
+```{r}
+boxplot(nota~estudio, data = data, col = "lightblue", 
+        main = "Diagrama de Cajas",
+        xlab = "Estudio Universitario", ylab = "Notas")
+medias = aggregate(nota~estudio, data = data, FUN = mean)
+points(medias, col = "red", pch = 15)
+```
+
+
+## 5. ¿Observas algunos valores atípicos en el boxplot anterior? ¿A qué grupo pertence?
+```{r}
+boxplot(nota~estudio, data = data)$out
+boxplot(nota~estudio, data = data)$group
+
+# Se observa un valor atipico de 10.02 para Industrial, de 8.52 para Informatica y de 9.29 para Telematica
+```
+
+
+## 6. Indica a partir del boxplot anterior en qué grupo observamos más variedad de notas.
+```{r}
+boxplot(nota~estudio, data = data, col = "lightblue", 
+        main = "Diagrama de Cajas",
+        xlab = "Estudio Universitario", ylab = "Notas", notch = TRUE)
+medias = aggregate(nota~estudio, data = data, FUN = mean)
+points(medias, col = "red", pch = 15)
+
+# Se observa mas variedad de notas en Mates ya que su caja es de mayor tamaño que las demas y los bigotes tienen bastante tamaño.
+```
+
+
+## 7. En base a todo lo anterior, ¿puedes afirmar de forma estadística que el examen de carrera ha ido mejor en algún estudio que en los demás?
+
+Yo diría que le ha ido mejor a Informatica ya que tiene la segunda mejor media con la variacion de datos más pequeña. Además en el diagrama de cajas se puede ver que el bigote inferior es el mas corto.
+
+# OTROS 1
+
+## 1. Calcula la media, la mediana y la moda redondeada a dos cifras decimales de las notas numéricas de los exámenes tanto de forma conjunta como por estudio universitario. ¿En qué grupo observamos la nota más alta? ¿Qué grupo está por encima de la media de estudiantes?
+```{r}
+round(summary(data[,2]),2) # media, mediana forma conjunta
+
+as.numeric(names(which(table(data$nota) == max(table(data$nota))))) # moda de forma global
+
+by(data$nota, data$estudio, FUN = summary) # agrupados por carrera universitaria
+
+# La nota mas alta se encuentra en la carrera de Industrial (10.025).. aunque es un valor extraño si evaluamos entre 0-10.. pro lo que si se considera una anomalía, podemos coger la máxima nota de Telemática (9.290
+
+# Los estudiantes de Matemáticas tienen una media superior (4.215) sobre los otros grupos.
+```
+
+
+## 2. ¿En qué grupo observamos más variación de notas? Justifica tu respuesta
+```{r}
+aggregate(nota~estudio, data = data, FUN = sd)
+
+aggregate(nota~estudio, data = data, FUN = IQR) # Rango intercuartilico
+
+# El grupo con más variación de las notas es el de Mates ya que tiene una una varianza mayor y por lo tanto una desviación estandar mayor
+```
+
+
+## 3. ¿Hay mucha diferencia entre el grupo que has respondido en el ejercicio 1 y en el ejercicio 2? Intenta dar una explicación objetiva del suceso
+```{r}
+table(data$estudio)
+```
+
+De los ejercicios anteriores observamos que las media mayor está en la carrera de Matemáticas pero a su ves tiene la mayor desviación.. esto puede ser causado por tener un mayor número de observaciones.
+
+Si buscamos la carrera con menor desviación y datos mas específicos, nos iríamos Industriales, que a su ves tiene un IQR menor.
+
+## 4. Dibuja en un único gráfico los cuatro diagramas de caja, uno para cada grupo. Añade así mismo la nota media, pon nombre, título y color al gráfico para documentar el gráfico correctamente.
+```{r}
+boxplot(nota~estudio, data = data, main = "Gráfico de notas por estudios", col =c("aquamarine","cadetblue1", "azure2", "cyan"),
+        notch = TRUE)
+media = aggregate(nota~estudio, data = data, FUN = mean)
+points(media, col = "red", pch = 20)
+```
+
+
+## 5. ¿Observas algunos valores atípicos en el boxplot anterior? ¿A qué grupo pertence?
+```{r}
+str(boxplot(nota~estudio, data = data, main = "Gráfico de notas por estudios", col =c("aquamarine","cadetblue1", "azure2", "cyan"),
+           notch = TRUE))
+
+# Se observan tres valores atípicos (10.02 8.52 9.29) en los grupos de Industrial, Informática y Telemática.
+```
+
+
+## 6. Indica a partir del boxplot anterior en qué grupo observamos más variedad de notas.
+```{r}
+boxplot(nota~estudio, data = data, col = "lightblue", 
+        main = "Diagrama de Cajas",
+        xlab = "Estudio Universitario", ylab = "Notas", notch = TRUE)
+medias = aggregate(nota~estudio, data = data, FUN = mean)
+points(medias, col = "red", pch = 15)
+
+# Se observa mas variedad de notas en Mates ya que su caja es de mayor tamaño que las demas y los bigotes tienen bastante tamaño.
+```
+
+
+## 7. En base a todo lo anterior, ¿puedes afirmar de forma estadística que el examen de carrera ha ido mejor en algún estudio que en los demás?
+
+Con el gráfico vemos que los estudiantes de Informática y Telemática han obtenido un mayor número de notas por encima de la media.
+
+Y en mayor detalle la carrera de Informática presenta una desviación menor.
