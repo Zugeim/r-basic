@@ -1,0 +1,30 @@
+---
+title: "Ejercicio Insecticida"
+author: "Imanol"
+date: "24/2/2021"
+output: pdf_document
+---
+
+# Análisis de spray insecticida
+Cargamos los datos del data set de `R` llamado ÌnsectSprays`
+```{r}
+data = InsectSprays
+head(data)
+str(data)
+```
+
+```{r}
+# Para un resumen estadistico de counts por spray
+by(data$count, data$spray, FUN = summary)
+```
+
+```{r}
+# Funcion desviación tipica para cada uno de los tipos de spray 
+aggregate(count~spray, data = data, FUN = sd) 
+```
+
+```{r}
+boxplot(count~spray, data = data, col = "lightgreen",
+        xlab = "Tipo de Spray", ylab = "Insectos muertos")
+```
+
