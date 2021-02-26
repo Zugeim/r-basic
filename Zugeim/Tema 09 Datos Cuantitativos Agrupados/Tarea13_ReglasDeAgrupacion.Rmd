@@ -1,0 +1,139 @@
+---
+title: "Tarea 13"
+author: "Imanol"
+date: "26/2/2021"
+output: pdf_document
+---
+Lee atentamente las transparencias del tema 9 e implementa las reglas que se comentan en los ejercicios
+```{r}
+crabs = read.table("../../data/datacrab.txt", header = TRUE)
+str(crabs)
+```
+```{r}
+cw = crabs$width # Cogemos solo la columna de tamaños
+```
+
+
+# Yo
+
+**Preguntas de esta tarea**
+
+## 1. Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la Scott en  Python.
+
+Esto esta en Jupyter Notebook Estadistica
+
+
+## 2. Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la raíz en R o en Python.
+
+Paso 1 Numero de Intervalos
+```{r raiz_numeroIntervalos}
+n = length(cw)
+k1 = ceiling((sqrt(n)))
+k1
+
+```
+Paso 2 Amplitud
+```{r raiz_amplitud}
+A = diff(range(cw)) / k1 # Diferencia del rango de intervalo dividido por el numero de intervalos
+
+A
+
+A = 0.9 # Se redondea a una cifra decimal por ser la precision de los datos del data frame
+
+```
+Paso 3 Extremos
+```{r raiz_extremos}
+# Como nos pide tener 14 intervalos debemos hacer de L1 a L15
+
+L1 = min(cw)-1/2*0.1 # Valor mínimo de la variable dividido la mitad de la precisión
+
+L1
+
+L = L1 + A*(0:k1) # Asi calculamos todas las L desde 0 hasta 14
+L
+```
+Paso 4 Marcas de clase
+```{r raiz_marcasClase}
+x1 = (L[1]+L[2])/2 # Es el punto medio de cada una de loa intervalos
+x1
+
+x = x1 + A*(0:k1-1) # Asi calculamos todas las x desde 0 hasta 13
+x
+
+```
+
+
+## 3. Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la Sturges en R o en Python
+
+Paso 1 Numero de Intervalos
+```{r sturges_numeroIntervalos}
+k1 = nclass.Sturges(cw)
+k1
+```
+Paso 2 Amplitud
+```{r sturges_amplitud}
+A = diff(range(cw)) / k1 # Diferencia del rango de intervalo dividido por el numero de intervalos
+
+A
+
+A = 1.4 # Se redondea a una cifra decimal por ser la precision de los datos del data frame
+
+```
+Paso 3 Extremos
+```{r sturges_extremos}
+# Como nos pide tener 9 intervalos debemos hacer de L1 a L10
+
+L1 = min(cw)-1/2*0.1 # Valor mínimo de la variable dividido la mitad de la precisión
+
+L1
+
+L = L1 + A*(0:k1) # Asi calculamos todas las L desde 0 hasta 9
+L
+```
+Paso 4 Marcas de clase
+```{r sturges_marcasClase}
+x1 = (L[1]+L[2])/2 # Es el punto medio de cada una de loa intervalos
+x1
+
+x = x1 + A*(0:k1-1) # Asi calculamos todas las x desde 0 hasta 8
+x
+
+```
+
+
+## 4. Da el algoritmo para reproducir el proceso de generación de clases y sus marcas respectivo para el número de clases obtenido con la regla de la  Freedman-Diaconis en R o en Python.
+
+Paso 1 Numero de Intervalos
+```{r FD_numeroIntervalos}
+k1 = nclass.FD(cw)
+k1
+```
+Paso 2 Amplitud
+```{r FD_amplitud}
+A = diff(range(cw)) / k1 # Diferencia del rango de intervalo dividido por el numero de intervalos
+
+A
+
+A = 1.0 # Se redondea a una cifra decimal por ser la precision de los datos del data frame
+
+```
+Paso 3 Extremos
+```{r FD_extremos}
+# Como nos pide tener 13 intervalos debemos hacer de L1 a L14
+
+L1 = min(cw)-1/2*0.1 # Valor mínimo de la variable dividido la mitad de la precisión
+
+L1
+
+L = L1 + A*(0:k1) # Asi calculamos todas las L desde 0 hasta 13
+L
+```
+Paso 4 Marcas de clase
+```{r FD_marcasClase}
+x1 = (L[1]+L[2])/2 # Es el punto medio de cada una de loa intervalos
+x1
+
+x = x1 + A*(0:k1-1) # Asi calculamos todas las x desde 0 hasta 12
+x
+
+```
