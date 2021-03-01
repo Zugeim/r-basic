@@ -1,0 +1,229 @@
+---
+title: "Calcular Estadisticos Notas"
+author: "Imanol"
+date: "1/3/2021"
+output: pdf_document
+---
+
+# Análisis de datos cuantitativos
+
+Creamos el vector con los datos
+```{r}
+set.seed(4)
+notas = sample(0:10,100, replace = TRUE)
+set.seed(NULL)
+notas
+```
+
+## Definir vector de los extremos
+
+En este caso los intervalos seran: [0,5), [5,7),[7,9),[9,10].
+```{r}
+L = c(0,5,7,9,10)
+# Definimos notas1 como el resultado de la codificación en intervalos utilizando como etiquetas los propios intervalos.
+notas1 = cut(notas, breaks = L, right = FALSE, include.lowest = TRUE)
+notas1
+```
+
+## Definir marcas de clase
+
+En este caso los intervalos seran: [0,5), [5,7),[7,9),[9,10].
+```{r}
+#Definimos las marcas de clase
+MC = (L[1:length(L)-1] + L[2:length(L)])/2
+# Definimos notas2 como el resultado de la codificación en intervalos utilizando como etiquetas las marcas de clase.
+notas2 = cut(notas, breaks = L, labels = MC,right = FALSE, include.lowest = TRUE)
+notas2
+```
+
+
+## Definir intervalos por su orden
+```{r}
+# Definimos notas3 como el resultado de la codificación en intervalos utilizando como etiquetas la posición ordenada del intervalo(1,2,3 y 4).
+notas3 = cut(notas, breaks = L, labels = FALSE,right = FALSE, include.lowest = TRUE)
+notas3
+```
+
+## Definir intervalos por calificación
+```{r}
+# Definimos notas3 como el resultado de la codificación en intervalos utilizando como etiquetas Susp, Aprob, Not y Exc
+notas4 = cut(notas, breaks = L, labels = c("Susp","Aprob", "Not", "Exc"),right = FALSE, include.lowest = TRUE)
+notas4
+```
+
+
+## Calculo de las frecuencias
+
+### Absolutas
+```{r}
+table(notas4)
+```
+
+### Relativas
+```{r}
+prop.table(table(notas4))
+```
+
+### Absolutas acumuladas
+```{r}
+cumsum(table(notas4))
+```
+
+### Relativas acumuladas
+```{r}
+cumsum(prop.table(table(notas4)))
+```
+
+### Todo lo anterior pero usando la funcion hist
+```{r}
+notasHist = hist(notas, breaks = L, right = FALSE, include.lowest = TRUE, plot = FALSE)
+FAbs = notasHist$count
+FRel = prop.table(FAbs)
+FAbsCum = cumsum(FAbs)
+FRelCum = cumsum(FRel)
+```
+
+
+## Crear data frame con todas las frecuencias
+```{r}
+intervalos = c("[0,5)","[5,7)","[7,9)","[9,10]")
+clasificacion = c("Suspenso","Aprobado","Notable","Excelente")
+marcas = notasHist$mids #Mids nos da las marcas de clase del histograma
+tabla.Fr = data.frame(intervalos,clasificacion,marcas,FAbs,FAbsCum,FRel,FRelCum)
+tabla.Fr
+```
+
+### Otra opción es usar una de las dos funciones que hemos creado anteriormente (script tabla de frecuencias)
+```{r}
+TablaFrecs.L = function(x,L,V){
+  x_cut = cut(x, breaks=L, right=FALSE, include.lowest=V)
+  intervals = levels(x_cut)
+  mc = (L[1:(length(L)-1)]+L[2:length(L)])/2
+  Fr.abs = as.vector(table(x_cut)) 
+  Fr.rel = round(Fr.abs/length(x),4)
+  Fr.cum.abs = cumsum(Fr.abs)
+  Fr.cum.rel = cumsum(Fr.rel)
+  tabla = data.frame(intervals, mc, Fr.abs, Fr.cum.abs, Fr.rel, Fr.cum.rel)
+  tabla
+}
+TablaFrecs.L(notas, L, TRUE)
+```
+
+# Calculo de estadisticos en datos agrupados
+
+## Calcular el total
+```{r}
+TOT = tabla.Fr$FAbsCum[4] # Accedo a la ultima fila de la suma acumulada que es dodne sale el total
+TOT
+```
+
+## Calcular la media
+```{r}
+notas.media = round(sum(tabla.Fr$FAbs*tabla.Fr$marcas)/TOT,3)
+# suma del producto de las frecuencias absolutas por las marcas de clase dividido por el total
+notas.media
+```
+
+## Calcular la varianza
+```{r}
+notas.var = round(sum(tabla.Fr$FAbs*tabla.Fr$marcas^2)/TOT-notas.media^2,3)
+# Suma producto de la frecuencia absoluta por las marcas al cuadrado dividido por el total y restarle la media al cuadrado
+notas.var
+```
+
+## Desviación típica
+```{r}
+notas.dt = round(sqrt(notas.var),3)
+notas.dt
+```
+
+## Intervalo Modal
+```{r}
+I.modal = tabla.Fr$intervalos[which(tabla.Fr$FAbs == max(tabla.Fr$FAbs))]
+# Los intervalos para los que la frecuencia absoluta es maxima
+I.modal
+```
+
+## Intervalo crítico para la mediana
+```{r}
+I.critic = tabla.Fr$intervalos[which(tabla.Fr$FRelCum >= 0.5)]
+I.critic[1] # I.critic me saca todos los intervalos por encima de 0.5, por eso le digo que me de la posicion 1 que es la primera en pasar ese 0.5
+```
+
+## Calcular estimación de la mediana de los datos "Reales"
+```{r}
+n = TOT
+Lc = L[1] # Limite inferior del intervalo
+Lc.pos = L[2] # Limite superior
+Ac = L[2]-L[1] # Amplitud del intervalo
+Nc.ant = 0 # # Frecuencia absoluta acumulada del anterior en este caso 0 por ser la primera posición pero sino podria ser por ejemplo tabla.Fr$FAbsCum[3] si el intervalo actual fuera 4
+nc = tabla.Fr$FAbs[1] # Frecuencia absoluta del intervalo actual
+M = Lc + Ac * ((n/2) - Nc.ant) / nc
+M # Aproximación de la mediana de los datos "reales"
+```
+
+Mediana real
+```{r}
+median(notas)
+```
+
+Lo creo en una función por si me sirve para calcular mas rapido
+```{r}
+med.est = function(P,TOT){
+  n = TOT
+  Lc = L[P] # Limite inferior del intervalo
+  Lc.pos = L[P+1] # Limite superior
+  Ac = L[P+1]-L[P] # Amplitud del intervalo
+  if(P == 1){
+    Nc.ant = 0
+  }
+  else {
+    Nc.ant =  tabla.Fr$FAbsCum[P-1]  
+  }
+  nc = tabla.Fr$FAbs[P] # Frecuencia absoluta del intervalo actual
+  M = Lc + Ac * ((n/2) - Nc.ant) / nc
+  M # Aproximación de la mediana de los datos "reales"
+}
+
+med.est(which(tabla.Fr$intervalos == I.critic)[1],TOT)
+```
+
+## Función para calcular la aproximación a los cuantiles
+```{r}
+aprox.quantile.p = function(Lcrit,Acrit,n,p,Ncrit.ant,ncrit){
+  round(Lcrit+Acrit*(p*n-Ncrit.ant)/ncrit,3)
+}
+  
+aprox.quantile.p(Lc,Ac,n,0.25,Nc.ant,nc) #Primer cuartil
+aprox.quantile.p(Lc,Ac,n,0.75,Nc.ant,nc) #Tercer cuartil
+```
+
+Versión que hace todo automatico solo pide la posicion del I.crit el total y el quantil
+
+```{r}
+aprox.quantile.p_2 = function(P,TOT,quan){
+  n = TOT
+  Lc = L[P] # Limite inferior del intervalo
+  Lc.pos = L[P+1] # Limite superior
+  Ac = L[P+1]-L[P] # Amplitud del intervalo
+  if(P == 1){
+    Nc.ant = 0
+  }
+  else {
+    Nc.ant =  tabla.Fr$FAbsCum[P-1]  
+  }
+  nc = tabla.Fr$FAbs[P] # Frecuencia absoluta del intervalo actual
+  
+  round(Lc+Ac*(quan*n-Nc.ant)/nc,3)
+}
+  
+aprox.quantile.p_2(1,n,0.25) #Primer cuartil
+aprox.quantile.p_2(1,n,0.75) #Tercer cuartil
+```
+
+Cuantiles reales
+```{r}
+quantile(notas,0.25)
+quantile(notas,0.75)
+```
+
