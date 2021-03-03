@@ -1,0 +1,104 @@
+---
+title: "Distribución Binomial"
+author: "Imanol"
+date: "3/3/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Función de densidad
+Sea $X = B(n = 30, p = 0.6)$,
+
+TODO: escribir la FDens y la FDistr
+
+# En `R`
+
+```{r}
+library(Rlab)
+n = 30
+p = 0.6
+
+dbinom(0:30, size = n, prob = p) # Cual seria la distribución de sacar
+                                 #entre 0 y 30 exitos, sabiendo que 
+                                 #utilizamos una muestra generada con tamaño
+                                 #30 veces el del experimento y que
+                                 #la probabilidad es 0.6
+
+# Para verlo mejor hacer un plot
+plot(0:n, dbinom(0:n, size = n, prob = p)) # Función de densidad de la binomial
+plot(0:n, pbinom(0:n, size = n, prob = p)) # Función de probabilidad acumulada
+
+# Calcular cuantiles
+qbinom(0.5, n, p) # La mediana de la binomial de size n y probabilidad p
+qbinom(0.25, n, p) # El Q1 de la binomial de size n y probabilidad p
+
+# Generar numeros aleatorios binomiales
+rbinom(1000, n, p) # Genera 1000 numeros que siguen una funcion de distribucion
+                   #binomial
+# Lo normale es hacer un histograma de estos numeros y no verlos tal cual
+hist(rbinom(1000, n, p), breaks = 0:30)
+
+```
+
+# En PYTHON
+```{python}
+from scipy.stats import binom
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots(1,1)
+n = 7
+p = 0.4
+
+mean, var, skew, kurt = binom.stats(n, p, moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+
+x = np.arange(binom.ppf(0.01, n, p), binom.ppf(0.99,n,p)) # Generar los valores de una binomial desde el cuantil mas pequeño al mas grande
+ax.plot(x, binom.pmf(x, n, p),'bo', ms = 8, label = "Función de densidad de B (7,0.4)") # "bo" quiere decir azul y con circulitos, ms es el grosor
+ax.vlines(x, 0, binom.pmf(x,n,p), colors = 'b', lw = 4, alpha = 0.5) # Le mete unas rayitas verticales en esos valores x desde 0 hasta la altura dada por cada punto.
+plt.show()
+
+
+# Si tenemos claro el dominio mejor asi
+fig, ax = plt.subplots(1,1)
+x = np.arange(0, n+1)
+ax.plot(x, binom.pmf(x, n, p),'bo', ms = 8, label = "Función de densidad de B (7,0.4)")
+ax.vlines(x, 0, binom.pmf(x,n,p), colors = 'b', lw = 4, alpha = 0.5)
+
+# Le ponemos el extra de ver la binomial
+rv = binom(n, p)
+ax.vlines(x,0,rv.pmf(x), colors = 'k', linestyles = '--', lw = 1, label = "Distribución teórica")
+ax.legend(loc = 'best', frameon = False)
+plt.show()
+
+
+# Par sacar la funcion de distribución acumulada
+fig, ax = plt.subplots(1,1)
+x = np.arange(0, n+1)
+ax.plot(x, binom.cdf(x, n, p),'bo', ms = 8, label = "Funcion de distribución acumulada de B (7,0.4)")
+ax.vlines(x, 0, binom.cdf(x,n,p), colors = 'b', lw = 4, alpha = 0.5)
+
+rv = binom(n, p)
+ax.vlines(x,0,rv.pmf(x), colors = 'k', linestyles = '--', lw = 1, label = "Distribución teórica")
+ax.legend(loc = 'best', frameon = False)
+plt.show()
+
+
+# Generar numeros aleatorios binomiales
+r = binom.rvs(n, p, size = 10) # Generar 10 valores aleatorios de repetir n
+                               #veces la bernouilli con parametro p.
+print(r)
+
+# Histograma de estos valores aleatorios
+fig, ax = plt.subplots(1,1)
+r = binom.rvs(n, p, size = 10000)
+ax.hist(r, bins = n)
+plt.show()
+```
+
