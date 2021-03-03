@@ -1,0 +1,67 @@
+---
+title: "Distribución de Bernoulli"
+author: "Imanol"
+date: "3/3/2021"
+output: pdf_document
+---
+
+# Función de densidad
+
+Sea $X = Be(p=0.7)$, la distribución que modela la probabilidad de obtener una cara usando una moneda trucada.
+
+$$f(k) = p^k(1-p)^{1-p},\ k\in \{0,1\}$$
+
+# EN R
+
+```{r}
+library(Rlab)
+
+dbern(0, prob = 0.7) # Calcula la probabilidad de sacar 0
+dbern(1, prob = 0.7) # Calcula la probabilidad de sacar 1
+
+pbern(0, prob = 0.7) # Función acumulada en 0
+pbern(1, prob = 0.7) # Función acumulada en 1
+
+qbern(0.5, prob = 0.7) # Calcular la mediana dandole la distribución
+qbern(0.25, prob = 0.7) # Calcular la Q1 dandole la distribución
+
+rbern(100, prob = 0.7) # Generar numeros aleatorios con esta distribución
+rbern(100, prob = 0.7) -> data
+hist(data) # Creo un histograma con esos datos aleatorios creados
+```
+
+
+# EN PYTHON
+
+```{python}
+from scipy.stats import bernoulli
+import matplotlib.pyplot as plt
+
+p = 0.7 
+
+# Cada una de las letras es cada uno de los parametros 
+#Ejemplo: mean = m
+mean, var, skew, kurt = bernoulli.stats(p, moments = 'mvsk')
+print("Media %f"%mean)
+print("Varianza %f"%var)
+print("Sesgo %f"%skew)
+print("Curtosis %f"%kurt)
+
+########### Función de probabilidad
+
+# Como plot
+fix, ax = plt.subplots(1,1)
+x = bernoulli.rvs(p, size = 1000)
+ax.plot(x) # raya vertical azul si es un exito
+           # raya vertical blanca si es un fracaso
+plt.show() 
+
+
+# Como historgrama (SE VE MEJOR)
+fix, ax = plt.subplots(1,1)
+x = bernoulli.rvs(p, size = 1000)
+ax.hist(x) # raya vertical azul si es un exito
+           # raya vertical blanca si es un fracaso
+plt.show() 
+```
+
