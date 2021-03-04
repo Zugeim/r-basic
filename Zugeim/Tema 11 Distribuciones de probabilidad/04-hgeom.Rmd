@@ -1,7 +1,7 @@
 ---
 title: "Distribución Hipergeométrica"
-author: "Curso de Estadística Descriptiva"
-date: "7/2/2019"
+author: "Imanol"
+date: "04/03/2021"
 output: pdf_document
 ---
 
@@ -17,14 +17,19 @@ Supongamos que tenemos 20 animales, de los cuales 7 son perros. Queremos medir l
 
 ```{r}
 library(Rlab)
-M = 7
-N = 13
-k = 12
-dhyper(x = 0:12, m = M, n = N, k = k)
-phyper(q = 0:12, m = M, n = N, k = k)
+M = 7  # Tipo de animal que queremos
+N = 13 # Tipo de animales que no queremos
+k = 12 # Numero de estracciones.
+
+dhyper(x = 0:12, m = M, n = N, k = k) # Densidad, el numero mas probable de perros que saldra es 4.
+
+phyper(q = 0:12, m = M, n = N, k = k) # Acumulada, la mediana es 5
+
 qhyper(p = 0.5, m = M, n = N, k = k)
+
+
 rhyper(nn = 1000, m = M, n = N, k = k) -> data
-hist(data, breaks = 8)
+hist(data, breaks = 8) # Las veces que ha salido cada numero
 ```
 
 
@@ -35,8 +40,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 [M, n, N] = [20, 7, 6]
-rv = hypergeom(M, n, N)
-x = np.arange(0, n+1)
+rv = hypergeom(M, n, N) # Valores aleatorios
+x = np.arange(0, n+1)   
 y = rv.pmf(x)
 
 mean, var, skew, kurt = rv.stats(moments = 'mvsk')
