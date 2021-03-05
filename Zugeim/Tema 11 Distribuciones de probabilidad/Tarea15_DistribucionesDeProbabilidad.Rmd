@@ -1,0 +1,239 @@
+---
+title: "Tarea 15 Distribuciones de probabilidad"
+author: "Imanol"
+date: "5/3/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. En una universidad, se sabe que el 25% de los alumnos realizan algún tipo de deporte. Se ha obtenido una muestra de 30 alumnos.
+```{r}
+p = 0.25
+q = 0.75
+n = 30
+```
+
+### a) Si llamamos X a la variable aleatoria que cuenta el número de alumnos que realizan algún tipo de deporte, ¿qué tipo de distribución sigue X?
+```{r}
+#Una distribución binomial
+```
+
+### b) ¿Qué esperanza tiene X?
+```{r}
+E = n*p
+E # 7.5
+```
+
+### c) ¿Y varianza?
+```{r}
+Var = n*p*q
+Var # 5.625
+```
+
+### d) Calcula con R (o Python) la probabilidad de que más de 25 alumnos practiquen algún deporte.
+```{r}
+library(Rlab)
+#Calculo la probabilidad acumulada para 25 alumnos, y se lo resto a 1
+P = (1 - pbinom(25,n,p))*100
+P # 2.023937e-10%
+```
+
+### e) Calcula con R (o Python) la probabilidad de que exactamente 15 alumnos practiquen algún deporte.
+```{r}
+library(Rlab)
+#Valor de función de probabilidad para 15 alumnos
+P = round(dbinom(15,n,p)*100,2)
+P # 0.19%
+```
+
+### f) Calcula con R (o Python) la probabilidad de que de 10 alumnos o menos practiquen algún deporte.
+```{r}
+library(Rlab)
+#Calculo la probabilidad acumulada para 10 alumnos
+P = round(pbinom(10,n,p)*100,2)
+P # 89.43%
+```
+
+## 2. El número medio de accidentes de coche en la ciudad de Mahón en 2 meses es de 2 accidentes.
+
+
+### a) ¿Qué distribución sigue la v.a. que cuenta el número de accidentes en 2 meses?
+
+Se trata de una distibución de Poisson del tipo $Po(2)$ para una unidad de tiempo de 2 meses.
+```{r}
+
+# Sige una distribución de Poisson
+
+```
+
+### b) Calcula la esperanza
+
+a esperanza de una distribución de Poisson es su parámetro lambda que en este caso es 2 para una unidad de tiempo de 2 meses.
+```{r}
+lambda = 2
+
+E = lambda
+E # 2
+```
+
+### c) Calcula con R (o Python) la probabilidad de que no ocurra ningún accidente en 2 meses.
+```{r}
+library(Rlab)
+
+#Defino el suceso de estudio, 0 accidentes
+x = 0
+
+#Determino su probabilidad
+P = round(ppois(0,lambda)*100,2)
+P # 13.53%
+```
+
+## 3. El 40% de un pueblo a las afueras de la ciudad de Pensilvania ve un concurso que dan por la tele. El concurso llama por teléfono a 15 personas del pueblo elegidas al azar. ¿De qué distribución se trata?
+
+Se trata de una distribución binomial del tipo $B(15,0.4)$, donde 15 es el número de intentos totales (llamadas) y 0.4 es la probabilidad de que alguién que esté viendo el programa coja el teléfono.
+```{r}
+# Distribución binomial
+```
+
+## 4. En un bol muy grande tenemos, en total, 70 fresas, de entre las cuales 10 están podridas. Tomando un puñado de 20 fresas al azar y sin reemplazar ninguna de ellas, ¿qué distribución sigue la v.a. que cuenta el número de fresas podridas?
+
+La variable siguen una distribución hipergeométrica del tipo $X~H(10,60,20)$, siendo 10 las fresas que hay podridas (N), 60 el resto de fresas (M) y 20 las fresas que cogemos (n).
+```{r}
+#Hipergeometrica
+```
+
+### Da también la esperanza y la varianza de esta variable aleatoria.
+```{r}
+n = 20
+N = 10
+M = 70 - N
+
+E = n*N/(N+M)
+E # 2.857143
+
+Var = n*N*M*(N+M-n)/((N+M)^2*(N+M-1))
+Var # 1.774623
+```
+
+## 5. Un test de matemáticas consta de 200 preguntas de verdadero o falso. Para una persona que respondiese al azar, ¿qué distribución seguiría la v.a. que cuenta el número de preguntas acertadas?
+
+Se trata de una distribución binomial del tipo B(200,0.5).
+```{r}
+# Una distribución binomial
+```
+
+### Da también la esperanza y la varianza de esta variable aleatoria.
+```{r}
+n = 200
+p = 0.5
+q = 0.5
+
+E = n*p
+E # 100
+
+Var = n*p*q
+Var # 50
+
+```
+
+## 6. Un test de matemáticas consta de 200 preguntas. Cada pregunta consta de 4 posibles respuestas con solo una correcta. Para una persona que respondiese al azar, ¿qué distribución seguiría la v.a. que cuenta el número de preguntas acertadas?
+
+Se trata de una distribución binomial del tipo B(200,0.25).
+```{r}
+#Distribución binomial
+```
+
+Da también la esperanza y la varianza de esta variable aleatoria.
+```{r}
+p = 0.25
+q = 1 - p
+n = 200
+
+E = n*p
+E # 50
+
+Var = n*p*q
+Var # 37.5
+```
+
+## 7. Un test de matemáticas consta de 200 preguntas de verdadero o falso. Para una persona que respondiese al azar y por orden, ¿qué distribución seguiría la v.a. que cuenta el número de preguntas respondidas hasta el primer acierto?
+
+Se trata de una distribución geométrica del tipo Ge(0.5) para el nº de preguntas respondidas hasta el primer acierto.
+```{r}
+# Distribución geometrica
+```
+
+### Da también la esperanza y la varianza de esta variable aleatoria.
+```{r}
+p = 0.5
+
+E = 1/p
+E # 2
+
+Var = (1-p)/p^2
+Var # 2
+```
+
+## 8. Para evitar ser arrestado al pasar el control de seguridad, un viajero ha colocado 7 pastillas de droga en una botella que contiene 14 píldoras de vitaminas, las cuales son muy similares a las otras. Si el policía de turno selecciona 4 pastillas aleatoriamente para analizarlas, ¿qué distribución sigue la v.a. que cuenta el número de pastillas de droga?
+
+La variable siguen una distribución hipergeométrica del tipo X~H(7,14,4), siendo 4 las pastillas de droga (N), 14 las pastillas de vitaminas (M) y 4 las pastillas que coge el policia (n).
+```{r}
+#Hipergeometrica
+```
+
+## 9. Un servicio dedicado a la reparación de aires acondicionados recibe de media 27 llamadas diarias. ¿Qué distribución sigue la v.a. que cuenta el número de llamadas diarias?
+
+Se trata de una distibución de Poisson del tipo $Po(27)$ para una unidad de tiempo de 1 día.
+```{r}
+# Distribución de poison
+```
+
+## 10. Se lanza 53 veces un dado. ¿Qué distribución sigue la v.a. que cuenta cuántas veces ha salido un número impar? ¿Y la v.a. que cuenta el número de veces que ha salido un número par? ¿Y la v.a. que cuenta las veces que hemos obtenido exactamente el número "5"?
+
+En el primer caso se trata de una binomial del tipo B (53, 0.5).
+En el segundo caso se trata de una binomial del tipo B (53, 0.5).
+En el tercer caso se trata de una binomial del tipo B (53, 0.1667).
+```{r}
+# Distribución binomial
+# Distribución binomial
+# Distribución binomial
+```
+
+## 11. El precio medio del litro de gasolina durante el próximo año se estima que puede oscilar entre 1.09€ y 2.53€. ¿De qué distribución de probabilidad se trata?
+
+Se trata de una distribución continua uniforme sobe el intervalo [1.09,2.53]
+```{r}
+# Distribución Uniforme
+```
+
+### Da la esperanza
+```{r}
+a = 1.09
+b = 2.53
+
+E = (a+b)/2
+E # 1.81
+```
+
+## 12. En una tienda del centro comercial, el tiempo medio de cola para poder pagar en caja es de 7 minutos. ¿De qué distribución de probabilidad se trata?
+
+Se trata de una distribución continua exponencial con lamba igual a 7 minutos
+```{r}
+# Distribución Exponencial
+```
+
+### Da la esperanza y varianza
+
+```{r}
+lambda = 7
+
+E = 1/lambda
+E # 0.1428571
+
+Var = 1/lambda^2
+Var # 0.02040816
+```
+
