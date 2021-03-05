@@ -1,8 +1,10 @@
 ---
 title: "Vuelos de NYC"
-author: "Curso de Estadística Descriptiva"
-date: "9/1/2019"
-output: html_document
+author: "Imanol"
+date: "5/3/2021"
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
