@@ -2,7 +2,9 @@
 title: "Pokemon"
 author: "Curso de Estadística Descriptiva"
 date: "9/1/2019"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
