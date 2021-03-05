@@ -8,7 +8,9 @@ output:
   pdf_document: default
 ---
 
-Con una sola instrucción, dibujad el gráfico de la función $y=x^2−3x+30$ entre −15 y 15. De título, poned **“Una parábola”**. De etiquetas, en el eje 0X poned, en formato matemático, "x"; y en el eje 0Y, introducid $y=x^2−3x+30$, también en formato matemático. Tenéis que utilizar la función **curve()**
+# 1. Con una sola instrucción, dibujad el gráfico de la función $y=x^2−3x+30$ entre −15 y 15. De título, poned **“Una parábola”**. De etiquetas, en el eje 0X poned, en formato matemático, "x"; y en el eje 0Y, introducid $y=x^2−3x+30$, también en formato matemático. Tenéis que utilizar la función **curve()**
+
+## Yo
 ```{r}
 y <- function(x){x^2 - 3*x + 30}
 plot(0,0,
@@ -21,8 +23,18 @@ curve(y, add = TRUE, col = "red")
   
 ```
 
+## Otro
+```{r}
+curve(x^2-3*x+30, xlim = c(-15,15),
+main="Una Parabola",
+xlab=expression("x"),
+ylab=expression("y=x^2−3x+30")
+)
+```
 
-Considerando lo que habéis obtenido en el ejercicio anterior y siendo $y = f(x) = x^2−3x+30$ e $I = [-15:15]$, si en vez de utilizar la función curve(), utilizamos la función plot(), ¿es correcta la sentencia plot(f(I)) para representar la curva f en el intervalo I? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia plot(f(I)) se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función f en R y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+# 2. Considerando lo que habéis obtenido en el ejercicio anterior y siendo $y = f(x) = x^2−3x+30$ e $I = [-15:15]$, si en vez de utilizar la función curve(), utilizamos la función plot(), ¿es correcta la sentencia plot(f(I)) para representar la curva f en el intervalo I? En otras palabras, dan ambas sentencias la misma gráfica? Obviamente, en la sentencia plot(f(I)) se han omitido el resto de parámetros requeridos en el ejercicio anterior porque no influyen para nada en la curva. Tanto si la respuesta es afirmativa como negativa, cread la función f en R y argumentad vuestra respuesta, considerando todos los parámetros requeridos (título y etiquetas de ambos ejes).
+
+## Yo
 ```{r}
 I = -15:15
 f <- I^2 - 3*I +30
@@ -34,39 +46,125 @@ plot(f,
 
 ```
 
+## Otro
 
-Dibuja un gráfico semilogarítmico de la función $y = 5\cdot 2^x$ entre -10 y 25. Utilizad la función curve(). Mostrad solo la etiqueta del eje 0Y, que ponga $"y = 5\cdot 2^x"$ en formato matemático.
-```{r}
-y <- function(x){5*(2^x)}
-plot(y,
-     log = "y",
-     main = "Grafica semilogarítmica", 
-     xlab = "", ylab = expression(y = 5*(2^x)),
-     xlim = c(-10,25),
-     cex = 0
-    )
-curve(y, add = TRUE, col = "red")
+Si es correcta, porque plot permite la entrada de una funcion parametrizada
+```{r }
+f <- function(x){x^2-3*x+30}
+I=(-15:15)
+plot(f(I),
+main="Una Parabola",
+xlab=expression("x"),
+ylab=expression("y=x^2−3x+30")
+)
 ```
 
 
-# Dibuja el gráfico de la función $y_1 = 3x$ utilizando la función curve(). Añade la curva $y_2=-3x$, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto (13,10)) que indique que la función 3x es la azul y la -3x verde.
+# 3. Dibuja un gráfico semilogarítmico de la función $y = 5\cdot 2^x$ entre -10 y 25. Utilizad la función curve(). Mostrad solo la etiqueta del eje 0Y, que ponga $"y = 5\cdot 2^x"$ en formato matemático.
+
+## Yo
+```{r }
+y <- function(x){5*(2^x)}
+
+curve(y, add = FALSE, col = "red", 
+      main="Semi Logaritmico",
+      xlab = "", ylab = expression(y = 5*(2^x)),
+      xlim = c(-10,25))
+```
+
+## Otro
+```{r}
+curve(5*2^x, xlim = c(-10,25),
+main="Semi Logaritmico",
+xlab=expression("x"),
+ylab=expression("y=5*2^x")
+)
+```
+
+# 4. Dibuja el gráfico de la función $y_1 = 3x$ utilizando la función curve(). Añade la curva $y_2=-3x$, entre -10 y 20. El gráfico no debe mostrar ninguna etiqueta. La primera curva debe ser de color azul y la segunda, de color verde. Ponedle de título "2 rectas" y de subtítulo "Dos rectas con pendiente opuesto". Añadid al gráfico un recuadro (con la esquina superior izquierda en el punto (13,10)) que indique que la función 3x es la azul y la -3x verde.
+
+## YO
 ```{r}
 y1 <- function(x){3*x}
 y2 <- function(x){-3*x}
 
-curve(y1, add = TRUE, col = "red")
-curve(y2, add = TRUE, col = "red")
+curve(y1, add = FALSE, col = "blue", xlim = c(-10,20),
+      main="2 rectas",
+      sub="2 rectas con pendientes opuestas",)
+curve(y2, add = TRUE, col = "green")
+legend( x = 13, y = 10,
+       col=c("blue","green"), 
+       legend=c("y1","y2"),
+       lwd=2)
 ```
 
-
-#Dad la instrucción que añada a un gráfico anterior la recta horizontal y = 0 de color rojo con un grosor de 5 puntos.
+## Otro
 ```{r}
-
+curve(3*x, xlim = c(-10,20),
+      main="2 rectas",
+      sub="2 rectas con pendientes opuestas",
+      col="blue")
+curve(-3*x, col="green", add=TRUE)   
+legend("topleft", 
+       col=c("blue","green"), 
+       legend=c("y1","y2"),
+       lwd=3)
 ```
 
 
-#Dad la instrucción que añada a un gráfico anterior la recta y = 2x+7 de color azul con un grosor de 2 puntos.
+# 5. Dad la instrucción que añada a un gráfico anterior la recta horizontal y = 0 de color rojo con un grosor de 2 puntos.
+
+## Yo
 ```{r}
-
+curve(y1, add = FALSE, col = "blue", xlim = c(-10,20),
+      main="2 rectas",
+      sub="2 rectas con pendientes opuestas",)
+curve(y2, add = TRUE, col = "green")
+legend( x = 13, y = 10,
+       col=c("blue","green"), 
+       legend=c("y1","y2"),
+       lwd=2)
+abline(h=0,lwd=5, col="red")
 ```
 
+## Otro
+```{r}
+curve(3*x, xlim = c(-10,20),
+      main="2 rectas",
+      sub="2 rectas con pendientes opuestas",
+      col="blue")
+   curve(-3*x, col="green", add=TRUE)   
+   legend("topleft",
+       col=c("blue","green"), 
+       legend=c("y1","y2"),
+       lwd=3)
+   abline(h=0,lwd=5, col="red")
+```
+
+# 6. Dad la instrucción que añada a un gráfico anterior la recta horizontal y = 2x+7 de color rojo con un grosor de 2 puntos.
+
+## Yo
+```{r}
+curve(y1, col = "blue", xlim = c(-10,20),
+      main="2 rectas",
+      sub="2 rectas con pendientes opuestas",)
+curve(y2, add = TRUE, col = "green")
+legend( x = 13, y = 10,
+       col=c("blue","green"), 
+       legend=c("y1","y2"),
+       lwd=2)
+abline(1,10,lwd=2, col="red")
+```
+
+curve(2*x+7, col = "blue", lwd =2, add = TRUE)
+```{r}
+curve(y1, col = "blue", xlim = c(-10,20),
+      main="2 rectas",
+      sub="2 rectas con pendientes opuestas",)
+curve(y2, add = TRUE, col = "green")
+legend( x = 13, y = 10,
+       col=c("blue","green"), 
+       legend=c("y1","y2"),
+       lwd=2)
+curve(2*x+7, col = "red", lwd =2, add = TRUE)
+```
