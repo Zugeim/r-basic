@@ -30,6 +30,9 @@ print(data.head())
 ```
 
 ## Medidas de centralización
+
+Dan una idea del valor mas tipico, donde se concentra la media y la mediana etc etc
+
 ```{python}
 # Media de cada una de las columnas
 print(data.mean()) 
@@ -80,3 +83,117 @@ plt.vlines(combined_data.median(), ymin = 0, ymax = 0.3, linewidth=2.0, color = 
 plt.show()
 ```
 
+## Medidas de dispersión
+
+Describen la variación de los datos
+
+### Rango de `mpg`, five nums, cuartiles
+```{python}
+# Rango de milla por galon
+rang = max(data["mpg"]) - min(data["mpg"])
+print(rang)
+
+# Los cinco percentiles que ayudan a describir la dispersión de una variable
+five_nums = [mtcars["mpg"].quantile(0),
+            mtcars["mpg"].quantile(0.25),
+            mtcars["mpg"].quantile(0.5),
+            mtcars["mpg"].quantile(0.75),
+            mtcars["mpg"].quantile(1.0)
+]
+print(five_nums)
+
+# Una función de R que da directamente esos five numbers
+print(mtcars["mpg"].describe())
+
+# Rango intercuartilico
+print(mtcars["mpg"].quantile(0.75) - mtcars["mpg"].quantile(0.25))
+
+# El bolxpot
+data.boxplot(column = "mpg", return_type = "axes", figsize = (10,10))
+
+## Pongo nombres
+plt.text(x=0.8, y = mtcars["mpg"].quantile(0.25), s = "1r cuartil")
+plt.text(x=0.8, y = mtcars["mpg"].quantile(0.5), s = "Mediana")
+plt.text(x=0.8, y = mtcars["mpg"].quantile(0.75), s = "3r cuartil")
+
+plt.text(x=0.9, y = mtcars["mpg"].quantile(0), s = "Min")
+plt.text(x=0.9, y = mtcars["mpg"].quantile(1), s = "Max")
+
+plt.text(x = 0.7, y = mtcars["mpg"].quantile(0.5), s = "RIC", rotation = 90, size = 25) # El rotation rota el texto
+
+plt.show()
+```
+
+### Varianza y desviación típica
+
+```{python}
+# Variacion
+print(data["mpg"].var())
+
+# Desviación tipica
+#cambia de manera rapida por influencia de sesgo o outliers
+print(data["mpg"].std())
+
+# Desviacion mediana absoluta
+#es dificil que cambie de manera rapida por influencia de sesgo o outliers
+mad = abs(data["mpg"] - data["mpg"].median())
+k = 1.4826 # Es un valor deducido de la estadistica (siempre es este)
+print(mad.median()*k)
+```
+
+### El sesgo y la curtosis
+
+El sesgo indica la simetria o asimetria de una distribución
+
+La curtosis mide como de picuda es la distribucion.
+
+```{python}
+# Sesgo
+print(data["mpg"].skew()) # Tira mas hacia la derecha (positivo)
+
+# Curtosis
+print(data["mpg"].kurt()) # Es bastante neutro porque se acerca a 0
+```
+
+
+```{python}
+# Vemos como quedan el sesgo y la curtosis comparando dos distribuciones diferenctes
+
+## Distribución con sesgo bastante neutro
+norm = np.random.normal(size=100000)
+
+## Una distribución con sesgo a la izquierda
+skew = np.concatenate((np.random.normal(size=35000)+2, 
+                      np.random.exponential(size=65000)),
+                      axis = 0)
+                      
+## Una distribucion planita, sesgo nulo y curtosis negativa por ser lo contrario a un pincho.
+unif = np.random.uniform(-2,2,size = 100000)
+
+## Acampanada, muy simetrica. Pero su curtosis es grande por tener un pico muy prominente.
+peak = np.concatenate((np.random.exponential(size=50000),
+                      np.random.exponential(size=50000)*(-1)),
+                      axis = 0)
+
+
+data = pd.DataFrame({
+  "normal": norm,
+  "skew": skew,
+  "unif": unif,
+  "peak": peak
+})
+
+data.plot(kind="density", figsize = (10,10), xlim = (-5,5))
+plt.show()
+
+print("Normal, Sesgo = %f, Curtosis = %f"%(data["normal"].skew(), data["normal"].kurt()))
+print("Normal+Exp, Sesgo = %f, Curtosis = %f"%(data["skew"].skew(), data["skew"].kurt()))
+print("Uniforme, Sesgo = %f, Curtosis = %f"%(data["unif"].skew(), data["unif"].kurt()))
+print("Suma de Exp, Sesgo = %f, Curtosis = %f"%(data["peak"].skew(), data["peak"].kurt()))
+```
+
+La normal es una distribucion totalmente simetrica
+
+La suma de la normal mas la exponencial tienen un sesgo positivo, por lo que la mayoria de datos a la izquierd.
+
+La uniforme como la suma de las dos exponenciales, un sesgo muy cercano a 0. Mientras que con la curtosis a mas plana menos pico y cuanto mas afilado el pico mayor curtosis.
