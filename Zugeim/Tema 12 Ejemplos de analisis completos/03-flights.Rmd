@@ -1,36 +1,50 @@
 ---
 title: "Vuelos de NYC"
-author: "Curso de Estadística Descriptiva"
-date: "9/1/2019"
+author: "Imanol"
+date: "6/3/2021"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(reticulate)
+
+library(reticulate) 
+use_python("C:/Users/Imano/anaconda3/envs/Curso Estadistica/python.exe")
+```
+
+```{python}
+import pandas as pd
 ```
 
 ## Vuelos de NYC
 
 ```{r}
-data <- nycflights13::flights
+data <- nycflights13::flights # Asi puedo coger la tabla de esa libreria
 head(data)
 nrow(data)
 summary(data)
 ```
 
 ```{python}
-pydata = r.data
-pydata = pydata[pydata["dest"]=="ORD"]
+# Cargo la variable de R
+pydata = r.data 
+
+# Me quedo con el vuelo de aeropuerto de destino ORD
+pydata = pydata[pydata["dest"]=="ORD"] 
+
+# Me quedo con las columnas de la compañia aerea, el retraso de la salida y el origen
 pydata = pydata[['carrier', 'dep_delay', 'arr_delay', 'origin']]
-pydata = pydata[pydata['arr_delay']<6*60]
-pydata = pydata.dropna()
+
+pydata = pydata[pydata['arr_delay']<6*60] # Para filtrar outliers
+pydata = pydata.dropna() # Elimino los na
 print(pydata.head())
 print(pydata.shape)
 ```
 
 ```{r}
 summary(py$pydata)
+
+# Boxplot del retraso de la llegada en funcion del origen, usando los datos filtrados en python
 boxplot(arr_delay~origin, data = py$pydata, main = "Retraso de los vuelo hacia Orlando desde NYC")
 ```
 
