@@ -1,16 +1,17 @@
 ---
 title: "Pokemon"
 author: "Curso de Estadística Descriptiva"
-date: "9/1/2019"
+date: "6/3/2021"
 output:
   pdf_document: default
   html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
-library(reticulate)
-use_python("/anaconda3/bin/python")
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+
+library(reticulate) 
+use_python("C:/Users/Imano/anaconda3/envs/Curso Estadistica/python.exe")
 ```
 
 # Pokemon (Py -> R)
@@ -22,14 +23,29 @@ import pandas as pd
 pokemon = pd.read_csv("../../data/Pokemon.csv")
 print(pokemon.head())
 print(pokemon.shape)
-pokemon = pokemon[pokemon["Generation"]==1]
+
+# Para solo ver los pokemon de la primera generación
+pokemon = pokemon[pokemon["Generation"]==1] 
+
+# Lo filtramos aún más quedandonos con solo los del tipo 1 y 2, y la velocidad
 pokemon = pokemon[["Type 1", "Type 2", "Speed"]]
 print(pokemon.shape)
+
+# Por si acaso hay variables na para que las elimine
 pokemon = pokemon.dropna()
 print(pokemon.shape)
 ```
 
 ## Transmisión de los datos de Python a R
+
+Con **fig.width** le doy el ancho a la figura
+
+Con **fig.height** le doy la altura a la figura
+
+Un histograma de la variable **pokemon** creada en `python`, todas las filas para la columna llamada **"speed"**.
+
+Numero de divisiones 10
+
 ```{r, fig.width=7, fig.height=4}
 hist(py$pokemon[,"Speed"], breaks = 10, main = "Velocidad de los Pokemon")
 ```
@@ -39,11 +55,14 @@ hist(py$pokemon[,"Speed"], breaks = 10, main = "Velocidad de los Pokemon")
 ```{r}
 pokemon2 <- read.csv("../../data/Pokemon.csv", header = TRUE)
 head(pokemon2)
-library(tidyverse)
+library(tidyverse) # Esto es avanzado de como trabajar
+
+# Lo que tenia anteriormente (pokemon2) lo filtro
+# %>% significa que lo filtro
 pokemon2 <- pokemon2 %>% 
-  filter(Generation == 1) %>%
-  select(Type.1, Type.2, Speed) %>%
-  na.omit()
+  filter(Generation == 1) %>% # Primero filtro y cojo solo los de la 1º generacion
+  select(Type.1, Type.2, Speed) %>% # A continuación selecciono solo las columnas que me interesan 
+  na.omit() # Finalmente, elimino los na
 summary(pokemon2)
 ```
 

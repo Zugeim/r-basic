@@ -6,7 +6,9 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = FALSE)
+# echo=TRUE para que se muestre el parametro de cada una de las chucks
+# cache = TRUE para que cree un cache y asi guarde los datos y le cueste menos cargarse el pdf. Para limpiar el cache lo ponemos a false y lo volvemos a cargar o borramos los ficheros.
 
 # Para que me coja los paquetes de este entorno
 Sys.setenv(RETICULATE_PYTHON = "C:/Users/Imano/anaconda3/envs/Curso Estadistica/python.exe") 
